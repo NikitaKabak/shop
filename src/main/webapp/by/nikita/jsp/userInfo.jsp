@@ -7,23 +7,23 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page import="java.util.ArrayList" %>
 
 <html>
+
 <head>
     <title>User</title>
 </head>
+<body>
 
 <h2>User Info</h2>
 
-<c:set var="listok" value="${list}"></c:set>
 
-       <c:out value="${listok.get(1)}"/>
+<c:out value="+1"> </c:out><br/>
 
-
-
-
-
+<c:forEach  items="${list}" var="user">
+    <c:out value="${user}"> </c:out><br/>
+</c:forEach>
+<c:out value="${list}"></c:out>
 
 </body>
 </html>

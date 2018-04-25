@@ -1,9 +1,6 @@
 package by.nikita.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,7 +71,32 @@ public class DaoUsers implements DaoInterface {
     }
 
     @Override
-    public List getall() throws Exception {
-        return null;
+    public List<User> getall() throws Exception {
+        List<User> users = new ArrayList<>();
+
+        String sql ="SELECT idusers, name, password, email, idrole, idstatus  From users ;";
+        Statement st = null;
+        st = connection.createStatement();
+        ResultSet resultSet = st.executeQuery(sql);
+        while (resultSet.next()){
+            int idUser = resultSet.getInt("idusers");
+            System.out.println(idUser);
+            String nameUser = resultSet.getString("name");
+            System.out.println(nameUser);
+            String passwordUser = resultSet.getString("password");
+            System.out.println(passwordUser);
+            String emailUser = resultSet.getString("email");
+            System.out.println(emailUser);
+            int idRole = resultSet.getInt("idrole");
+            System.out.println(idRole);
+            int idStatus = resultSet.getInt("idstatus");
+            System.out.println(idStatus);
+            User user = new User(idUser, nameUser, passwordUser, emailUser, idRole, idStatus);
+            users.add(user);
+        }
+        st.close();
+        resultSet.close();
+        connection.close();
+        return users;
     }
 }

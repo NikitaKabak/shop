@@ -1,17 +1,17 @@
 package by.nikita.servlet;
 
 import by.nikita.dao.DaoUsers;
-import by.nikita.logger.App;
+import by.nikita.dao.User;
 import org.apache.log4j.Logger;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Enumeration;
+import java.util.List;
 
 public class FirstServlet extends HttpServlet {
     final static Logger logger = Logger.getLogger(FirstServlet.class);
@@ -38,15 +38,30 @@ public class FirstServlet extends HttpServlet {
                 request.getRequestDispatcher("/by/nikita/jsp/users.jsp").forward(request, response);
                 break;
             case "showUser":
-                DaoUsers list = new DaoUsers();
+                DaoUsers user = new DaoUsers();
 
                 int id = Integer.parseInt(request.getParameter("idusers"));
 
-                ArrayList<String> listl = list.read(id);
+                ArrayList<String> listl = user.read(id);
                 System.out.println(listl);
 
                 request.getSession().setAttribute( "list",listl);
                 request.getRequestDispatcher("/by/nikita/jsp/userInfo.jsp").forward(request, response);
+               /* RequestDispatcher rd = request.getRequestDispatcher("/by/nikita/jsp/userInfo.jsp");
+                rd.forward(request, response);*/
+                break;
+            case"showAllusers":
+                DaoUsers users = new DaoUsers();
+                List<User> usersList = null;
+                try {
+                    usersList=users.getall();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                request.setAttribute("users", usersList);
+                RequestDispatcher rd = request.getRequestDispatcher("/by/nikita/jsp/usersInfo.jsp");
+                rd.forward(request, response);
                 break;
             default:
                 System.out.println("Чтото  не так");

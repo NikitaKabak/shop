@@ -12,5 +12,5 @@ public interface DaoInterface<T> {
 
     public  void delete(T ob);
 
-    public List<T> getall()throws Exception;
+    public List<User> getall()throws Exception;
 }
