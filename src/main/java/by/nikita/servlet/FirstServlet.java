@@ -4,6 +4,7 @@ import by.nikita.dao.DaoUsers;
 import by.nikita.dao.User;
 import org.apache.log4j.Logger;
 
+import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -38,7 +39,12 @@ public class FirstServlet extends HttpServlet {
                 request.getRequestDispatcher("/by/nikita/jsp/users.jsp").forward(request, response);
                 break;
             case "showUser":
-                DaoUsers user = new DaoUsers();
+                DaoUsers user = null;
+                try {
+                    user = new DaoUsers();
+                } catch (NamingException e) {
+                    e.printStackTrace();
+                }
 
                 int id = Integer.parseInt(request.getParameter("idusers"));
 
@@ -51,7 +57,12 @@ public class FirstServlet extends HttpServlet {
                 rd.forward(request, response);*/
                 break;
             case"showAllusers":
-                DaoUsers users = new DaoUsers();
+                DaoUsers users = null;
+                try {
+                    users = new DaoUsers();
+                } catch (NamingException e) {
+                    e.printStackTrace();
+                }
                 List<User> usersList = null;
                 try {
                     usersList=users.getall();

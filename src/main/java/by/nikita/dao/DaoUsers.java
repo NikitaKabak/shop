@@ -1,5 +1,6 @@
 package by.nikita.dao;
 
+import javax.naming.NamingException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +9,7 @@ public class DaoUsers implements DaoInterface {
      private DBconnector connect;
      private Connection connection;
 
-    public DaoUsers(){
+    public DaoUsers() throws NamingException {
         connect = new DBconnector();
         connect.apDriver();
         try {

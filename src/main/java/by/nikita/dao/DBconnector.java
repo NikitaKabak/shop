@@ -1,5 +1,10 @@
 package by.nikita.dao;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -22,8 +27,15 @@ public class DBconnector {
         }
     }
 
-    public Connection getConnection() throws SQLException {
+    /*public Connection getConnection() throws SQLException {
         return DriverManager.getConnection(url + "/" + nameDB, user, password);
+    }*/
+
+    public static Connection getConnection() throws SQLException, NamingException {
+        Context ctx = new InitialContext();
+        DataSource dataSource = (DataSource) ctx.lookup("java:comp/env/shop");
+        return  dataSource.getConnection();
+
     }
 
 
