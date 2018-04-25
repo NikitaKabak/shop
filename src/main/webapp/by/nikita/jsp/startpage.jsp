@@ -15,6 +15,7 @@
     <form action="shop" method="post" >
         <input type="submit" name="nameButton" value="catalog">
         <input type="submit" name="nameButton" value="login">
+        <input type="submit" name="nameButton" value="users">
     </form>
 </body>
 </html>
