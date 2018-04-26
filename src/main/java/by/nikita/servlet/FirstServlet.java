@@ -23,6 +23,7 @@ public class FirstServlet extends HttpServlet {
         request.getRequestDispatcher("/by/nikita/jsp/startpage.jsp").forward(request, response);
     }
 
+    @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         switch (request.getParameter("nameButton")) {
@@ -30,7 +31,27 @@ public class FirstServlet extends HttpServlet {
                 request.getRequestDispatcher("/by/nikita/jsp/catalog.jsp").forward(request, response);
                 break;
             case "login":
-                request.getRequestDispatcher("/by/nikita/jsp/login.jsp").forward(request, response);
+                String loginU = request.getParameter("login");
+                String passwordU = request.getParameter("password");
+                if (loginU.equals("") || passwordU.equals("") ){
+                    request.getRequestDispatcher("/by/nikita/jsp/loginError.jsp").forward(request, response);
+                } else {
+                    DaoUsers user = null;
+                    try {
+                        user = new DaoUsers();
+                    } catch (NamingException e) {
+                        e.printStackTrace();
+                    }
+                    ArrayList<String> list = user.read(loginU);
+                    System.out.println(list);
+                    String pass = list.get(2);
+                    if (passwordU.equals(pass)){
+                        request.getRequestDispatcher("/by/nikita/jsp/homepage.jsp").forward(request, response);
+                    } else
+                    {
+                        request.getRequestDispatcher("/by/nikita/jsp/loginError.jsp").forward(request, response);
+                    }
+                }
                 break;
             case "registracion":
                 request.getRequestDispatcher("/by/nikita/jsp/registracion.jsp").forward(request, response);

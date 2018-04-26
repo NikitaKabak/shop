@@ -26,8 +26,6 @@ public class DaoUsers implements DaoInterface {
         }
 
     }
-
-
     @Override
     public Object create() {
         return null;
@@ -45,13 +43,15 @@ public class DaoUsers implements DaoInterface {
             ResultSet rs = ppst.executeQuery();
             rs.next();
 
-            System.out.println(rs.getString("idusers"));
+            /*System.out.println(rs.getString("idusers"));*/
             list.add( rs.getString("idusers"));
             list.add(rs.getString("name"));
             list.add(rs.getString("password"));
             list.add(rs.getString("email"));
             list.add(rs.getString("idrole"));
             list.add(rs.getString("idstatus"));
+            ppst.close();
+            rs.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -59,6 +59,35 @@ public class DaoUsers implements DaoInterface {
 
         closeconnect();
        return list;
+    }
+
+    public ArrayList<String> read(String name) {
+        ArrayList<String> list = new ArrayList<String>();
+
+        String sql ="SELECT * FROM users WHERE  name =?;";
+        PreparedStatement ppst = null;
+        try {
+            ppst = connection.prepareStatement(sql);
+            ppst.setString(1,name);
+            ResultSet rs = ppst.executeQuery();
+            rs.next();
+
+            /*System.out.println(rs.getString("idusers"));*/
+            list.add( rs.getString("idusers"));
+            list.add(rs.getString("name"));
+            list.add(rs.getString("password"));
+            list.add(rs.getString("email"));
+            list.add(rs.getString("idrole"));
+            list.add(rs.getString("idstatus"));
+            ppst.close();
+            rs.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        closeconnect();
+        return list;
     }
 
     @Override
@@ -81,17 +110,11 @@ public class DaoUsers implements DaoInterface {
         ResultSet resultSet = st.executeQuery(sql);
         while (resultSet.next()){
             int idUser = resultSet.getInt("idusers");
-            System.out.println(idUser);
             String nameUser = resultSet.getString("name");
-            System.out.println(nameUser);
             String passwordUser = resultSet.getString("password");
-            System.out.println(passwordUser);
             String emailUser = resultSet.getString("email");
-            System.out.println(emailUser);
             int idRole = resultSet.getInt("idrole");
-            System.out.println(idRole);
             int idStatus = resultSet.getInt("idstatus");
-            System.out.println(idStatus);
             User user = new User(idUser, nameUser, passwordUser, emailUser, idRole, idStatus);
             users.add(user);
         }
