@@ -1,10 +1,9 @@
 package by.nikita.dao;
 
+
+
 import javax.naming.NamingException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,8 +35,31 @@ public class DaoCatalogImp implements DaoCatalog {
     }
 
     @Override
-    public ArrayList<String> read(int id) {
-        return null;
+    public Product read(int id) {
+        Product product = null;
+        String sql = "SELECT * From product WHERE idproduct =? ;";
+        /*String sql = "SELECT idproduct, nameproduct, idcategory, idstatusproduct, quantity, price From product WHERE id =? ;";*/
+        PreparedStatement ppst = null;
+
+        try {
+            ppst = connection.prepareStatement(sql);
+            ppst.setInt(1,id);
+            ResultSet rs = ppst.executeQuery();
+            rs.next();
+            int idproduct = rs.getInt("idproduct");
+            String nameproduct = rs.getString("nameproduct");
+            int idcategory = rs.getInt("idcategory");
+            int idstatusproduct = rs.getInt("idstatusproduct");
+            int quantity = rs.getInt("quantity");
+            int price = rs.getInt("price");
+            product = new Product(idproduct, nameproduct, idcategory, idstatusproduct, quantity, price);
+            ppst.close();
+            rs.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return product;
     }
 
     @Override

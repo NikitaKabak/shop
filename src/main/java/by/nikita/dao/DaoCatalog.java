@@ -6,7 +6,7 @@ import java.util.List;
 public interface DaoCatalog<T> {
     public  T create();
 
-    public ArrayList<String> read(int id);
+    public Product read(int id);
 
     public  void updete(T ob);
 

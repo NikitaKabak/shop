@@ -13,6 +13,7 @@ import java.util.List;
 
 public class CatalogSrv extends HttpServlet {
 
+    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         DaoCatalogImp product = null;
         try {
@@ -20,9 +21,9 @@ public class CatalogSrv extends HttpServlet {
         } catch (NamingException e) {
             e.printStackTrace();
         }
-        List<Product>catalog = null;
+        List<Product> catalog = null;
         try {
-          catalog = product.getall();
+            catalog = product.getall();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -31,7 +32,8 @@ public class CatalogSrv extends HttpServlet {
         request.getRequestDispatcher("/by/nikita/jsp/catalog.jsp").forward(request, response);
     }
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response){
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response) {
         System.out.println(request.getParameter("id"));
 
     }

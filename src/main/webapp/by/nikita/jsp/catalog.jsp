@@ -16,7 +16,7 @@
 <c:forEach items="${catalog}" var="product">
     <c:out value = "(${product.getIdproduct()})"></c:out>
     <c:out value = "${product.getNameproduct()}"></c:out>
-    <a href='catalog?id=${product.getIdproduct()}'>${product.getNameproduct()}</a><br>
+    <a href='product?id=${product.getIdproduct()}'>${product.getNameproduct()}</a><br>
 
     <%--<a href="/shop/catalog">Catalog</a>--%>
 </c:forEach>

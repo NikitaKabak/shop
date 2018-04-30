@@ -33,6 +33,14 @@
     <servlet-name>catalog</servlet-name>
     <url-pattern>/shop/catalog</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>product</servlet-name>
+    <servlet-class>by.nikita.servlet.ProductSrv</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>product</servlet-name>
+    <url-pattern>/shop/product</url-pattern>
+  </servlet-mapping>
   <resource-ref>
     <description>DB Connection</description>
     <res-ref-name>shop</res-ref-name>
