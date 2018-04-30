@@ -25,7 +25,7 @@
 <c:out value="+1"> </c:out><br/>
 <c:forEach  items="${list}" var="user">
     <c:out value="${user}"> </c:out><br/>
-<c:forEach>
+</c:forEach>
 <c:out value="${list}"></c:out>
 
 </body>

@@ -3,7 +3,7 @@ package by.nikita.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface DaoInterface<T> {
+public interface DaoCatalog<T> {
     public  T create();
 
     public ArrayList<String> read(int id);
@@ -13,4 +13,5 @@ public interface DaoInterface<T> {
     public  void delete(T ob);
 
     public List<User> getall()throws Exception;
+
 }

@@ -25,7 +25,14 @@
     <servlet-name>buttons</servlet-name>
     <url-pattern>/buttons</url-pattern>
   </servlet-mapping>
-
+  <servlet>
+    <servlet-name>catalog</servlet-name>
+    <servlet-class>by.nikita.servlet.CatalogSrv</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>catalog</servlet-name>
+    <url-pattern>/shop/catalog</url-pattern>
+  </servlet-mapping>
   <resource-ref>
     <description>DB Connection</description>
     <res-ref-name>shop</res-ref-name>

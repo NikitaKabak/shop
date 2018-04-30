@@ -17,9 +17,11 @@
     <input type="submit" name="nameButton" value="login"><br>
 </form>
 <a href="/by/nikita/jsp/registration.jsp">registration</a><br>
-<form action="shop" method="post">
+
+<a href="/shop/catalog">Catalog</a>
+<%--<form action="shop" method="post">
     <input type="submit" name="nameButton" value="catalog">
-</form>
+</form>--%>
 <a href="/by/nikita/jsp/infoShop.jsp">infoShop</a>
 </body>
 </html>

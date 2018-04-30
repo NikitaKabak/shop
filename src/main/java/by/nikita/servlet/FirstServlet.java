@@ -1,6 +1,6 @@
 package by.nikita.servlet;
 
-import by.nikita.dao.DaoUsers;
+import by.nikita.dao.DaoUsersImp;
 import by.nikita.dao.User;
 import org.apache.log4j.Logger;
 
@@ -36,9 +36,9 @@ public class FirstServlet extends HttpServlet {
                 if (loginU.equals("") || passwordU.equals("") ){
                     request.getRequestDispatcher("/by/nikita/jsp/loginError.jsp").forward(request, response);
                 } else {
-                    DaoUsers user = null;
+                    DaoUsersImp user = null;
                     try {
-                        user = new DaoUsers();
+                        user = new DaoUsersImp();
                     } catch (NamingException e) {
                         e.printStackTrace();
                     }
@@ -60,9 +60,9 @@ public class FirstServlet extends HttpServlet {
                 request.getRequestDispatcher("/by/nikita/jsp/users.jsp").forward(request, response);
                 break;
             case "showUser":
-                DaoUsers user = null;
+                DaoUsersImp user = null;
                 try {
-                    user = new DaoUsers();
+                    user = new DaoUsersImp();
                 } catch (NamingException e) {
                     e.printStackTrace();
                 }
@@ -78,9 +78,9 @@ public class FirstServlet extends HttpServlet {
                 rd.forward(request, response);*/
                 break;
             case"showAllusers":
-                DaoUsers users = null;
+                DaoUsersImp users = null;
                 try {
-                    users = new DaoUsers();
+                    users = new DaoUsersImp();
                 } catch (NamingException e) {
                     e.printStackTrace();
                 }
