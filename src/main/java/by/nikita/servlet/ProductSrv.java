@@ -1,5 +1,6 @@
 package by.nikita.servlet;
 
+import by.nikita.Service.Backet;
 import by.nikita.dao.DaoCatalogImp;
 import by.nikita.dao.Product;
 
@@ -28,6 +29,17 @@ public class ProductSrv extends HttpServlet {
 
 
     public  void doPost(HttpServletRequest request, HttpServletResponse response){
+        System.out.println(request.getParameter("nameButton"));
+        switch (request.getParameter("nameButton")){
+            case "addInBacket":
+                Integer idProduct = Integer.parseInt(request.getParameter("idProduct"));
+                Integer qantityByProduct = Integer.parseInt(request.getParameter("byqantity"));
+                Backet backet = new Backet();
+                backet.setBacket(idProduct,qantityByProduct);
+
+
+
+        }
 
     }
 }

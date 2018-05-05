@@ -22,10 +22,14 @@
         <dd>${product.getIdstatusproduct()}</dd>
         <dt>Price</dt>
         <dd>${product.getPrice()}</dd>
+        <dt>Qantity</dt>
+        <dd>${product.getQuantity()}</dd>
             <%--<dt>Image</dt>
             <dd><img src="productImage?id=${product.id}" /></dd>--%>
     </dl>
-
+    <form action="/shop/product" method="post">Введитете количество товара которое вы хотите приобрести <input name="byqantity">
+        <input type="hidden" name="idProduct" value="${product.getIdproduct()} hi">
+     <input type="submit" name="nameButton" value="addInBacket" ></form>
 
 </body>
 </html>

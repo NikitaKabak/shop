@@ -30,8 +30,8 @@ public class DaoCatalogImp implements DaoCatalog {
 
     }
     @Override
-    public Object create() {
-        return null;
+    public void create() {
+
     }
 
     @Override

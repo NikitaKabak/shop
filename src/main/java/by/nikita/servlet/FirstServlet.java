@@ -42,7 +42,12 @@ public class FirstServlet extends HttpServlet {
                     } catch (NamingException e) {
                         e.printStackTrace();
                     }
-                    ArrayList<String> list = user.read(loginU);
+                    ArrayList<String> list = null;
+                    try {
+                        list = user.read(loginU);
+                    } catch (NamingException e) {
+                        e.printStackTrace();
+                    }
                     System.out.println(list);
                     String pass = list.get(2);
                     if (passwordU.equals(pass)){
@@ -51,6 +56,23 @@ public class FirstServlet extends HttpServlet {
                     {
                         request.getRequestDispatcher("/by/nikita/jsp/loginError.jsp").forward(request, response);
                     }
+                }
+                break;
+            case "Reg":
+                String nameUser = request.getParameter("name");
+                String passwordUser = request.getParameter("password");
+                String emailUser = request.getParameter("email");
+                if (nameUser.equals("") || passwordUser.equals("") || emailUser.equals("") ){
+                    request.getRequestDispatcher("/by/nikita/jsp/loginError.jsp").forward(request, response);
+                } else {
+                    DaoUsersImp userr = null;
+                    try {
+                        userr = new DaoUsersImp();
+                        userr.create(nameUser, passwordUser, emailUser);
+                    } catch (NamingException e) {
+                        e.printStackTrace();
+                    }
+                    request.getRequestDispatcher("/by/nikita/jsp/users.jsp").forward(request, response);
                 }
                 break;
             case "registracion":
@@ -69,7 +91,12 @@ public class FirstServlet extends HttpServlet {
 
                 int id = Integer.parseInt(request.getParameter("idusers"));
 
-                ArrayList<String> listl = user.read(id);
+                ArrayList<String> listl = null;
+                try {
+                    listl = user.read(id);
+                } catch (NamingException e) {
+                    e.printStackTrace();
+                }
                 System.out.println(listl);
 
                 request.getSession().setAttribute( "list",listl);

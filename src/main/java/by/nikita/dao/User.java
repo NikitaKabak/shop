@@ -5,7 +5,7 @@ public class User {
     private String passwordUser;
     private String emailUser;
     private int idUser;
-    private int idRole;
+    private Integer idRole;
     private int idStatus;
 
     public User(){}

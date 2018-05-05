@@ -34,7 +34,8 @@ public class CatalogSrv extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
-        System.out.println(request.getParameter("id"));
+
+
 
     }
 }
