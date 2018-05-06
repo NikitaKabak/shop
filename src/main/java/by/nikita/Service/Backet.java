@@ -20,4 +20,11 @@ public class Backet {
     public void remove(Integer idProduct ){
         backet.remove(idProduct);
     }
+
+    @Override
+    public String toString() {
+        return "Backet{" +
+                "backet=" + backet +
+                '}';
+    }
 }

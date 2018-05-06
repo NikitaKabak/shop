@@ -9,7 +9,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ProductSrv extends HttpServlet {
 
@@ -28,7 +31,7 @@ public class ProductSrv extends HttpServlet {
     }
 
 
-    public  void doPost(HttpServletRequest request, HttpServletResponse response){
+    public  void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println(request.getParameter("nameButton"));
         switch (request.getParameter("nameButton")){
             case "addInBacket":
@@ -36,9 +39,12 @@ public class ProductSrv extends HttpServlet {
                 Integer qantityByProduct = Integer.parseInt(request.getParameter("byqantity"));
                 Backet backet = new Backet();
                 backet.setBacket(idProduct,qantityByProduct);
-
-
-
+                Map<Integer,Integer> backetList = new HashMap<>();
+                backetList = backet.getBacket();
+                System.out.println(backetList);
+                HttpSession session = request.getSession();
+                session.setAttribute("Backet",backetList);
+                request.getRequestDispatcher("/by/nikita/jsp/catalog.jsp").forward(request,response);
         }
 
     }

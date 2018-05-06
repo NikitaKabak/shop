@@ -28,7 +28,7 @@
             <dd><img src="productImage?id=${product.id}" /></dd>--%>
     </dl>
     <form action="/shop/product" method="post">Введитете количество товара которое вы хотите приобрести <input name="byqantity">
-        <input type="hidden" name="idProduct" value="${product.getIdproduct()} hi">
+        <input type="hidden" name="idProduct" value="${product.getIdproduct()}">
      <input type="submit" name="nameButton" value="addInBacket" ></form>
 
 </body>

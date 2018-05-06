@@ -11,7 +11,9 @@
 <head>
     <title>Catalog</title>
 </head>
-<body>
+
+
+<a href="/by/nikita/jsp/backet.jsp">MyBacket</a>
 <h2>Catalog</h2>
 <c:forEach items="${catalog}" var="product">
     <c:out value = "(${product.getIdproduct()})"></c:out>
