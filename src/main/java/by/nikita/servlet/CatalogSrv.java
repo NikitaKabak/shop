@@ -11,9 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-public class CatalogSrv extends HttpServlet {
+public class CatalogSrv  {
 
-    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         DaoCatalogImp product = null;
         try {
@@ -32,7 +31,7 @@ public class CatalogSrv extends HttpServlet {
         request.getRequestDispatcher("/by/nikita/jsp/catalog.jsp").forward(request, response);
     }
 
-    @Override
+
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
 
 

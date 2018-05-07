@@ -14,7 +14,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ProductSrv extends HttpServlet {
+public class ProductSrv  {
+    Backet backet = new Backet();
+    Map<Integer,Integer> backetList = new HashMap<>();
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         DaoCatalogImp productID = null;
@@ -37,14 +39,22 @@ public class ProductSrv extends HttpServlet {
             case "addInBacket":
                 Integer idProduct = Integer.parseInt(request.getParameter("idProduct"));
                 Integer qantityByProduct = Integer.parseInt(request.getParameter("byqantity"));
-                Backet backet = new Backet();
-                backet.setBacket(idProduct,qantityByProduct);
-                Map<Integer,Integer> backetList = new HashMap<>();
+
+
+                backet.addBacket(idProduct,qantityByProduct);
+
                 backetList = backet.getBacket();
                 System.out.println(backetList);
                 HttpSession session = request.getSession();
+
+               // backetList = session.getAttribute("Backet");
+                backetList.get(1);
+
+
                 session.setAttribute("Backet",backetList);
-                request.getRequestDispatcher("/by/nikita/jsp/catalog.jsp").forward(request,response);
+                CatalogSrv catalogSrv = new CatalogSrv();
+                catalogSrv.doGet(request,response);
+               /* request.getRequestDispatcher("/by/nikita/jsp/catalog.jsp").forward(request,response);*/
         }
 
     }

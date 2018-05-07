@@ -17,13 +17,15 @@ import java.util.List;
 public class FirstServlet extends HttpServlet {
     final static Logger logger = Logger.getLogger(FirstServlet.class);
 
-    @Override
+
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         request.getRequestDispatcher("/by/nikita/jsp/startpage.jsp").forward(request, response);
+        String uri = request.getRequestURI();
+        System.out.println(uri);
     }
 
-    @Override
+
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         switch (request.getParameter("nameButton")) {

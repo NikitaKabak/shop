@@ -9,15 +9,24 @@
 		 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
            version="3.1">
   <display-name>SHOP</display-name>
+
   <servlet>
+    <servlet-name>mainServlet</servlet-name>
+    <servlet-class>by.nikita.servlet.MainServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>mainServlet</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+ <!-- <servlet>
     <servlet-name>firstServlet</servlet-name>
     <servlet-class>by.nikita.servlet.FirstServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>firstServlet</servlet-name>
     <url-pattern>/shop</url-pattern>
-  </servlet-mapping>
-  <servlet>
+  </servlet-mapping>-->
+  <!--<servlet>
     <servlet-name>buttons</servlet-name>
     <servlet-class>by.nikita.servlet.Buttons</servlet-class>
   </servlet>
@@ -40,7 +49,7 @@
   <servlet-mapping>
     <servlet-name>product</servlet-name>
     <url-pattern>/shop/product</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping>-->
   <resource-ref>
     <description>DB Connection</description>
     <res-ref-name>shop</res-ref-name>

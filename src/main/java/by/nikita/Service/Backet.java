@@ -7,7 +7,11 @@ import java.util.Map;
 public class Backet {
     private Map<Integer, Integer> backet = new HashMap<Integer, Integer>();
 
-    public void setBacket(Integer idProduct, Integer qantityByProduct) {
+    public void setBacket(Backet backet) {
+
+    }
+
+    public void addBacket(Integer idProduct, Integer qantityByProduct) {
         backet.put(idProduct, qantityByProduct);
     }
 
