@@ -14,10 +14,22 @@
 
 <h2>MyBacket</h2>
 
-<c:forEach var="byProducts" items="${Backet}">
-<c:out value = "${byProducts}"/>
-
+<c:forEach var="byProducts" items="${BacketList}">
+    Наименование: <c:out value = "${byProducts.getKey()}"/> Kоличество:
+    <c:out value = "${byProducts.getValue()}"/> <br>
 </c:forEach>
+
+
+<form action="/shop/order" method="post">
+    <input type="submit" name="nameButton" value="Create" >
+</form>
+
+
+<form>
+    <button type="button"  name="nameButton" value="Create" onclick='location.pathname="/shop/order"'>Заказать</button>
+</form>
+
+
 
 
 </body>

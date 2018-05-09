@@ -1,6 +1,7 @@
 package by.nikita.dao;
 
 import javax.naming.NamingException;
+import java.sql.SQLException;
 import java.util.List;
 
 public interface DaoOrder<T> {
@@ -10,7 +11,7 @@ public interface DaoOrder<T> {
 
     public void updete(T obj);
 
-    public T reade(int id);
+    public T getOrder(Integer iduser, String data) throws SQLException, NamingException;
 
     public List<T> getall() throws NamingException;
 }

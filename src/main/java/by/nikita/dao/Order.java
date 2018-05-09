@@ -4,6 +4,8 @@ public class Order {
     private int idorder, idusers, idstatusorder;
     private String data;
 
+    public  Order(){}
+
     public Order(int idorder, int idusers, String data, int idstatusorder) {
         this.idorder = idorder;
         this.idusers = idusers;
