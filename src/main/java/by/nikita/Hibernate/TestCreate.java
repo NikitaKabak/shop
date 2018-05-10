@@ -10,6 +10,8 @@ public class TestCreate {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
 
+        
+
         Transaction tx = session.beginTransaction();
 
         User user = new User();
