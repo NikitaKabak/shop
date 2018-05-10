@@ -1,5 +1,6 @@
 package by.nikita.servlet;
 
+import by.nikita.Hibernate.TestCreate;
 import by.nikita.dao.DaoUsersImp;
 import by.nikita.dao.User;
 import org.apache.log4j.Logger;
@@ -67,13 +68,17 @@ public class FirstServlet extends HttpServlet {
                 if (nameUser.equals("") || passwordUser.equals("") || emailUser.equals("") ){
                     request.getRequestDispatcher("/by/nikita/jsp/loginError.jsp").forward(request, response);
                 } else {
-                    DaoUsersImp userr = null;
-                    try {
-                        userr = new DaoUsersImp();
+                    TestCreate userr = null;
+                   /* DaoUsersImp userr = null;
+                    try {*/
+
+                        userr = new TestCreate();
+                        userr.createTest();
+                  /*      userr = new DaoUsersImp();
                         userr.create(nameUser, passwordUser, emailUser);
                     } catch (NamingException e) {
                         e.printStackTrace();
-                    }
+                    }*/
                     request.getRequestDispatcher("/by/nikita/jsp/users.jsp").forward(request, response);
                 }
                 break;
