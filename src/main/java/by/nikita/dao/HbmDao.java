@@ -10,7 +10,7 @@ public interface HbmDao<T, PK> {
 
     public void delete(T t);
 
-    public void save();
+    public void save(T t);
 
     public T get();
 }

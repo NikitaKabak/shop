@@ -68,17 +68,17 @@ public class FirstServlet extends HttpServlet {
                 if (nameUser.equals("") || passwordUser.equals("") || emailUser.equals("") ){
                     request.getRequestDispatcher("/by/nikita/jsp/loginError.jsp").forward(request, response);
                 } else {
-                    TestCreate userr = null;
-                   /* DaoUsersImp userr = null;
-                    try {*/
+                    /*TestCreate userr = null;*/
+                    DaoUsersImp userr = null;
+                    try {
 
-                        userr = new TestCreate();
-                        userr.createTest();
-                  /*      userr = new DaoUsersImp();
+                        /*userr = new TestCreate();
+                        userr.createTest();*/
+                        userr = new DaoUsersImp();
                         userr.create(nameUser, passwordUser, emailUser);
                     } catch (NamingException e) {
                         e.printStackTrace();
-                    }*/
+                    }
                     request.getRequestDispatcher("/by/nikita/jsp/users.jsp").forward(request, response);
                 }
                 break;

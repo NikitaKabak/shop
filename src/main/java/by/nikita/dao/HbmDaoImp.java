@@ -1,14 +1,18 @@
 package by.nikita.dao;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import by.nikita.Hibernate.HibernateUtil;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import javax.persistence.*;
 
 public class HbmDaoImp<T, PK> implements HbmDao<T, PK>{
 
     Class<T> clas;
 
     @PersistenceContext
-    protected EntityManager entityManager;
+    protected EntityManager entityManager = null;
+
 
     public HbmDaoImp(Class<T> clazz){
 
@@ -18,7 +22,12 @@ public class HbmDaoImp<T, PK> implements HbmDao<T, PK>{
 
     @Override
     public void create(T t) {
+        entityManager = HibernateUtil.getEjb3Configuration().buildEntityManagerFactory().createEntityManager();
+        EntityTransaction tx =  entityManager.getTransaction();
+        tx.begin();
         entityManager.persist(t);
+        tx.commit();
+        entityManager.close();
     }
 
     @Override
@@ -42,7 +51,13 @@ public class HbmDaoImp<T, PK> implements HbmDao<T, PK>{
 
 
     @Override
-    public void save() {
+    public void save(T t) {
+        Session session = entityManager.unwrap(Session.class);
+        Transaction transaction = session.beginTransaction();
+        session.save(t);
+        transaction.commit();
+        session.close();
+
 
 
     }
