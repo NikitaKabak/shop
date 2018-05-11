@@ -1,10 +1,16 @@
 package by.nikita.dao;
 
-public interface HbmDao<T,PK> {
+public interface HbmDao<T, PK> {
 
+    public void create(T t);
 
-    public  void save();
-    public  void delete();
-    public  void updete();
-    public  T get();
+    public T read(PK id);
+
+    public T updete(T t);
+
+    public void delete(T t);
+
+    public void save();
+
+    public T get();
 }
