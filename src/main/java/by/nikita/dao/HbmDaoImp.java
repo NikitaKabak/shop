@@ -11,10 +11,9 @@ public class HbmDaoImp<T, PK> implements HbmDao<T, PK>{
     protected EntityManager entityManager;
 
     public HbmDaoImp(Class<T> clazz){
+
         clas = clazz;
     }
-
-
 
 
     @Override

@@ -11,17 +11,18 @@ public class Backet {
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "idbacket")
-    Integer idbacket;
+    private Integer idbacket;
 
     @Column (name = "idorder")
-    Integer idorder;
+    private Integer idorder;
 
     @Column (name = "idproduct")
-    Integer idproduct;
+    private Integer idproduct;
 
     @Column (name = "qantityby")
-    Integer qantityby;
+    private Integer qantityby;
 
     public Integer getIdbacket() {
         return idbacket;

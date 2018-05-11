@@ -25,11 +25,13 @@
 </form>
 
 
+<%--
 <form>
     <button type="button"  name="nameButton" value="Create" onclick='location.pathname="/shop/order"'>Заказать</button>
 </form>
 
 
+--%>
 
 
 </body>

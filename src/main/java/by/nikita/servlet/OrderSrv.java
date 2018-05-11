@@ -1,6 +1,8 @@
 package by.nikita.servlet;
 
+import by.nikita.dao.Backet;
 import by.nikita.dao.DaoOrderImp;
+import by.nikita.dao.HbmDaoImp;
 import by.nikita.dao.Order;
 
 import javax.naming.NamingException;
@@ -12,6 +14,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class OrderSrv {
     public void doGet( HttpServletRequest request, HttpServletResponse response){
@@ -48,6 +52,38 @@ public class OrderSrv {
                 }
                 Integer orderID = order.getIdorder();
                 System.out.println(orderID);
+
+
+
+                Map<Integer, Integer> map = (Map<Integer, Integer>) session.getAttribute("Backet");
+
+                if (map != null) {
+                    Map<Integer, Integer> backetMap = new HashMap<>();
+                    backetMap.putAll(map);
+                    System.out.println("Map из requesta");
+                    System.out.println(backetMap);
+
+                    Backet backet = new Backet();
+                    HbmDaoImp daoBacket = new HbmDaoImp(Backet.class);
+                    backet.setIdbacket(1);
+                    backet.setIdorder(orderID);
+
+                    for (Map.Entry entry : backetMap.entrySet()) {
+                        Integer idProduckt = (Integer) entry.getKey();
+                        Integer qantityby = (Integer) entry.getValue();
+                        System.out.println("Key: " + idProduckt + " Value: " + qantityby);
+                        backet.setIdproduct(idProduckt);
+                        backet.setQantityby(qantityby);
+                        daoBacket.create(backet);
+                    }
+                    System.out.println(backet);
+                }
+
+
+
+
+
+
 
                 /*session.getAttribute("backet");
 
