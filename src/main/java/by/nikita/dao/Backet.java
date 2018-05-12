@@ -1,7 +1,10 @@
 package by.nikita.dao;
 
 
+
+
 import javax.persistence.*;
+
 
 @Entity
 @Table(name = "backet")
@@ -10,18 +13,18 @@ public class Backet {
 
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "idbacket")
+   @Id
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
+   @Column(name = "idbacket",nullable = false)
     private Integer idbacket;
 
-    @Column (name = "idorder")
+    @Column(name = "idorder")
     private Integer idorder;
 
-    @Column (name = "idproduct")
+    @Column(name = "idproduct")
     private Integer idproduct;
 
-    @Column (name = "qantityby")
+    @Column(name = "qantityby")
     private Integer qantityby;
 
     public Integer getIdbacket() {

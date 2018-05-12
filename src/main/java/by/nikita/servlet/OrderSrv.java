@@ -65,7 +65,7 @@ public class OrderSrv {
 
                     Backet backet = new Backet();
                     HbmDaoImp daoBacket = new HbmDaoImp(Backet.class);
-                    /*backet.setIdbacket(1);*/
+                    backet.setIdbacket(1);
                     backet.setIdorder(orderID);
 
                     for (Map.Entry entry : backetMap.entrySet()) {
@@ -74,8 +74,8 @@ public class OrderSrv {
                         System.out.println("Key: " + idProduckt + " Value: " + qantityby);
                         backet.setIdproduct(idProduckt);
                         backet.setQantityby(qantityby);
-                        daoBacket.create(backet);
-                        /*daoBacket.save(backet);*/
+                        /*daoBacket.create(backet);*/
+                        daoBacket.save(backet);
                     }
                     System.out.println(backet);
                 }

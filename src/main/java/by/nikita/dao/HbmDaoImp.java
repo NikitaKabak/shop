@@ -2,6 +2,7 @@ package by.nikita.dao;
 
 import by.nikita.Hibernate.HibernateUtil;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import javax.persistence.*;
@@ -10,9 +11,10 @@ public class HbmDaoImp<T, PK> implements HbmDao<T, PK>{
 
     Class<T> clas;
 
-    @PersistenceContext
-    protected EntityManager entityManager = null;
+    /*@PersistenceUnit(unitName = "CRM")*/
+    protected EntityManagerFactory entityManagerFactory;
 
+    EntityManager entityManager;
 
     public HbmDaoImp(Class<T> clazz){
 
@@ -22,7 +24,8 @@ public class HbmDaoImp<T, PK> implements HbmDao<T, PK>{
 
     @Override
     public void create(T t) {
-        entityManager = HibernateUtil.getEjb3Configuration().buildEntityManagerFactory().createEntityManager();
+        entityManagerFactory = Persistence.createEntityManagerFactory("CRM");
+        entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction tx =  entityManager.getTransaction();
         tx.begin();
         entityManager.persist(t);
@@ -32,7 +35,9 @@ public class HbmDaoImp<T, PK> implements HbmDao<T, PK>{
 
     @Override
     public T read(PK id) {
+
         return entityManager.find(clas,id);
+
     }
 
     @Override
@@ -52,7 +57,8 @@ public class HbmDaoImp<T, PK> implements HbmDao<T, PK>{
 
     @Override
     public void save(T t) {
-        Session session = entityManager.unwrap(Session.class);
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         session.save(t);
         transaction.commit();
