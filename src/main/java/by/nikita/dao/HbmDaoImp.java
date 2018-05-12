@@ -11,6 +11,8 @@ public class HbmDaoImp<T, PK> implements HbmDao<T, PK>{
 
     Class<T> clas;
 
+    protected  SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+
     /*@PersistenceUnit(unitName = "CRM")*/
     protected EntityManagerFactory entityManagerFactory;
 
@@ -24,13 +26,20 @@ public class HbmDaoImp<T, PK> implements HbmDao<T, PK>{
 
     @Override
     public void create(T t) {
-        entityManagerFactory = Persistence.createEntityManagerFactory("CRM");
+       /* entityManagerFactory = Persistence.createEntityManagerFactory("CRM");
         entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction tx =  entityManager.getTransaction();
         tx.begin();
         entityManager.persist(t);
         tx.commit();
-        entityManager.close();
+        entityManager.close();*/
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        session.persist(t);
+        transaction.commit();
+        session.close();
+
+
     }
 
     @Override
@@ -41,8 +50,12 @@ public class HbmDaoImp<T, PK> implements HbmDao<T, PK>{
     }
 
     @Override
-    public T updete(T t) {
-        return  entityManager.merge(t);
+    public void updete(T t) {
+
+    }
+
+    @Override
+    public void saveOrUpdate(T t) {
 
     }
 
@@ -57,15 +70,14 @@ public class HbmDaoImp<T, PK> implements HbmDao<T, PK>{
 
     @Override
     public void save(T t) {
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
+
         session.save(t);
+
         transaction.commit();
         session.close();
-
-
-
     }
 
 
