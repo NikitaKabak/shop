@@ -6,7 +6,7 @@ public interface HbmDao<T, PK> {
 
     public void save(T t);
 
-    public void updete(T t);
+    public void update(T t);
 
     public void saveOrUpdate(T t);
 
@@ -14,5 +14,5 @@ public interface HbmDao<T, PK> {
 
     public void delete(T t);
 
-    public T get();
+    public T get(PK id);
 }

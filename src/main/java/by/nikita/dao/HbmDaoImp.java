@@ -6,21 +6,22 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
-public class HbmDaoImp<T, PK> implements HbmDao<T, PK>{
+public class HbmDaoImp<T, PK> implements HbmDao<T, PK> {
 
-    Class<T> clas;
 
-    protected  SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+    protected final Class<T> clas;
 
-    /*@PersistenceUnit(unitName = "CRM")*/
+    protected SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+
+    /*@PersistenceUnit(unitName = "CRM")
     protected EntityManagerFactory entityManagerFactory;
+    EntityManager entityManager;*/
 
-    EntityManager entityManager;
+    public HbmDaoImp(Class<T> clazz) {
 
-    public HbmDaoImp(Class<T> clazz){
-
-        clas = clazz;
+        this.clas = clazz;
     }
 
 
@@ -43,48 +44,85 @@ public class HbmDaoImp<T, PK> implements HbmDao<T, PK>{
     }
 
     @Override
-    public T read(PK id) {
+    public void save(T t) {
 
-        return entityManager.find(clas,id);
-
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        session.save(t);
+        transaction.commit();
+        session.close();
     }
 
     @Override
-    public void updete(T t) {
+    public void update(T t) {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        session.update(t);
+        transaction.commit();
+        session.close();
 
     }
 
     @Override
     public void saveOrUpdate(T t) {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        session.saveOrUpdate(t);
+        transaction.commit();
+        session.close();
+
 
     }
 
     @Override
     public void delete(T t) {
-        t = entityManager.merge(t);
-        entityManager.remove(t);
-
-    }
-
-
-
-    @Override
-    public void save(T t) {
 
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-
-        session.save(t);
-
+        session.delete(session.merge(t));
         transaction.commit();
         session.close();
+
+
     }
 
+    public void remove(T t) {
 
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        session.remove(session.merge(t));
+        transaction.commit();
+        session.close();
+
+
+    }
 
     @Override
-    public T get() {
-        return null;
+    public T get(PK id) {
+
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+       Class<T> tClass ;
+        T entity = (T) session.get(clas, (Serializable) id);
+        transaction.commit();
+        session.close();
+
+        return entity;
+    }
+
+    @Override
+    public T read(PK id) {
+
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        Class<T> tClass ;
+        T entity = session.find(clas,id);
+        transaction.commit();
+        session.close();
+
+
+        return entity;
+
     }
 
 
