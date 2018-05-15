@@ -43,6 +43,10 @@ public class MainServlet extends HttpServlet {
                 OrderSrv orderSrv = new OrderSrv();
                 orderSrv.doGet(request, response);
                 break;
+            case "/shop/test":
+                TestSrv testSrv = new TestSrv();
+                testSrv.doGet(request, response);
+                break;
 
             default:
                 request.getRequestDispatcher("/by/nikita/jsp/notFound.jsp").forward(request, response);
@@ -79,7 +83,10 @@ public class MainServlet extends HttpServlet {
             case "/shop/order":
                 OrderSrv orderSrv = new OrderSrv();
                 orderSrv.doPost(request, response);
-
+                break;
+            case "/shop/test":
+                TestSrv testSrv = new TestSrv();
+                testSrv.doPost(request, response);
                 break;
             default:
                 request.getRequestDispatcher("/by/nikita/jsp/notFound.jsp").forward(request, response);

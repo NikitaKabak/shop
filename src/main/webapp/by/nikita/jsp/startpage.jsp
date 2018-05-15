@@ -22,6 +22,10 @@
 <%--<form action="shop" method="post">
     <input type="submit" name="nameButton" value="catalog">
 </form>--%>
-<a href="/by/nikita/jsp/infoShop.jsp">infoShop</a>
+
+<a href="/by/nikita/jsp/registration.jsp">registration</a><br>
+<br><br><br><br>
+
+<a href="/by/nikita/jsp/Test.jsp">Test</a><br>
 </body>
 </html>

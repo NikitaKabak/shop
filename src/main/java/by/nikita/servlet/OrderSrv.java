@@ -65,7 +65,6 @@ public class OrderSrv {
 
                     Backet backet = new Backet();
                     HbmDaoImp daoBacket = new HbmDaoImp(Backet.class);
-                    backet.setIdbacket(1);
                     backet.setIdorder(orderID);
 
                     for (Map.Entry entry : backetMap.entrySet()) {

@@ -15,6 +15,8 @@ public class Backet {
 
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
+  /* @GeneratedValue(strategy = GenerationType.TABLE, generator = "student_gen")
+   @TableGenerator(name = "student_gen", initialValue = 10, allocationSize = 50)*/
    @Column(name = "idbacket",nullable = false)
     private Integer idbacket;
 

@@ -12,7 +12,9 @@
     <property name="hibernate.connection.password">root</property>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
     <property name="show_sql">true</property>
+   <!-- <property name="hibernate.hbm2ddl.auto">update</property>-->
     <mapping class="by.nikita.dao.Backet"/>
+    <mapping class="by.nikita.dao.Test"/>
 
   </session-factory>
 

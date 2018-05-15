@@ -48,6 +48,19 @@ public class HbmDaoImp<T, PK> implements HbmDao<T, PK> {
 
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
+
+/*
+         for (Integer id = 1; id <= 10; id++) {
+            Backet backet = new Backet();
+             Backet backetT = (Backet) t;
+
+            backet.setIdorder(backetT.getIdorder());
+             backet.setIdproduct(backetT.getIdproduct());
+             backet.setQantityby(backetT.getQantityby());
+
+             session.save(backet);
+           *//* transaction.commit();*//*
+        }*/
         session.save(t);
         transaction.commit();
         session.close();
@@ -102,7 +115,7 @@ public class HbmDaoImp<T, PK> implements HbmDao<T, PK> {
 
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-       Class<T> tClass ;
+        Class<T> tClass;
         T entity = (T) session.get(clas, (Serializable) id);
         transaction.commit();
         session.close();
@@ -115,8 +128,8 @@ public class HbmDaoImp<T, PK> implements HbmDao<T, PK> {
 
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        Class<T> tClass ;
-        T entity = session.find(clas,id);
+        Class<T> tClass;
+        T entity = session.find(clas, id);
         transaction.commit();
         session.close();
 
@@ -124,7 +137,6 @@ public class HbmDaoImp<T, PK> implements HbmDao<T, PK> {
         return entity;
 
     }
-
 
 
 }
