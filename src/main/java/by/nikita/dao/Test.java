@@ -6,10 +6,6 @@ import javax.persistence.*;
 @Table(name = "test")
 public class Test {
 
-
-    public Test() {
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idtest;
@@ -17,6 +13,9 @@ public class Test {
     private String name;
     @Column
     private Integer qantity;
+
+    public Test() {
+    }
 
     public Integer getIdtest() {
         return idtest;
@@ -41,6 +40,8 @@ public class Test {
     public void setQantity(Integer qantity) {
         this.qantity = qantity;
     }
+
+
 
     @Override
     public String toString() {

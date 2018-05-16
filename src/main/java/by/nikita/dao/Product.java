@@ -1,16 +1,27 @@
 package by.nikita.dao;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "product" )
 public class Product {
-    private int idproduct;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idproduct;
+    @Column
     private String nameproduct;
-    private int idcategory;
-    private int idstatusproduct;
-    private int quantity;
-    private int price;
+    @Column
+    private Integer idcategory;
+    @Column
+    private Integer idstatusproduct;
+    @Column
+    private Integer quantity;
+    @Column
+    private Integer price;
 
     public Product(){}
 
-    public  Product(int idproduct,String nameproduct,int idcategory,int idstatusproduct,int quantity,int price){
+    public  Product(Integer idproduct,String nameproduct,Integer idcategory,Integer idstatusproduct,Integer quantity,Integer price){
         this.idproduct = idproduct;
         this.nameproduct = nameproduct;
         this.idcategory = idcategory;
@@ -19,11 +30,11 @@ public class Product {
         this.price = price;
     }
 
-    public int getIdproduct() {
+    public Integer getIdproduct() {
         return idproduct;
     }
 
-    public void setIdproduct(int idproduct) {
+    public void setIdproduct(Integer idproduct) {
         this.idproduct = idproduct;
     }
 
@@ -35,35 +46,35 @@ public class Product {
         this.nameproduct = nameproduct;
     }
 
-    public int getIdcategory() {
+    public Integer getIdcategory() {
         return idcategory;
     }
 
-    public void setIdcategory(int idcategory) {
+    public void setIdcategory(Integer idcategory) {
         this.idcategory = idcategory;
     }
 
-    public int getIdstatusproduct() {
+    public Integer getIdstatusproduct() {
         return idstatusproduct;
     }
 
-    public void setIdstatusproduct(int idstatusproduct) {
+    public void setIdstatusproduct(Integer idstatusproduct) {
         this.idstatusproduct = idstatusproduct;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 

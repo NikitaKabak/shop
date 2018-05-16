@@ -10,9 +10,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class TestSrv {
 
@@ -110,6 +108,23 @@ public class TestSrv {
                 sessionRead.setAttribute("testGet",testRead);
                 request.getRequestDispatcher("/by/nikita/jsp/homepageTest.jsp").forward(request, response);
                 break;
+            case "getAll":
+
+               /* // Test ERntuty
+                List<Backet> listTest = new ArrayList();
+                Backet test = new Backet();
+                HbmDaoImp hbmDaoImpgetAll = new HbmDaoImp(Backet.class);
+                listTest = hbmDaoImpgetAll.getAll(Backet.class);*/
+
+                List<Test> listTest = new ArrayList();
+                Test test = new Test();
+                HbmDaoImp hbmDaoImpgetAll = new HbmDaoImp(Test.class);
+                listTest = hbmDaoImpgetAll.getAll(Test.class);
+                HttpSession sessiongetAll = request.getSession();
+                sessiongetAll.setAttribute("listTest",listTest);
+                request.getRequestDispatcher("/by/nikita/jsp/homepageTest.jsp").forward(request, response);
+                break;
+
             default:
                 request.getRequestDispatcher("/by/nikita/jsp/notFound.jsp").forward(request, response);
                 break;

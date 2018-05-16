@@ -17,6 +17,16 @@
         Name: <c:out value = "${test.getName()}"/> <br>
         Qantity: <c:out value = "${test.getQantity()}"/> <br>
 </c:if>
+<c:set var="listtest" value="${listTest}"></c:set>
+<c:if test="${listtest != null}" >
+    <c:forEach var="listtest"  items="${listtest}">
+        <c:out value="${listtest}"></c:out> // test Ebtity <br>
+        <%-- ID : <c:out value = "${listtest.getIdtest()}"/>
+         Name: <c:out value = "${listtest.getName()}"/>
+         Qantity: <c:out value = "${listtest.getQantity()}"/> <br>--%>
+    </c:forEach>
+
+</c:if>
 <body>
 <h3>ok</h3>
 </body>

@@ -6,7 +6,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.io.Serializable;
+import java.util.List;
 
 public class HbmDaoImp<T, PK> implements HbmDao<T, PK> {
 
@@ -107,7 +111,6 @@ public class HbmDaoImp<T, PK> implements HbmDao<T, PK> {
         transaction.commit();
         session.close();
 
-
     }
 
     @Override
@@ -138,5 +141,23 @@ public class HbmDaoImp<T, PK> implements HbmDao<T, PK> {
 
     }
 
+    public List getAll(Class clazz) {
+        List list = null;
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        /*String query = "from " + clazz.getCanonicalName();*/
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<T> query = builder.createQuery(clas);
+        Root<T> root = query.from(clas);
+        query.select(root);
+        /* query = "from Test ";*/
 
+        list = session.createQuery(query).getResultList();
+        transaction.commit();
+        session.close();
+        return list;
+    }
 }
+
+
+

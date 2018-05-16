@@ -1,39 +1,52 @@
 package by.nikita.dao;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "orders")
 public class Order {
-    private int idorder, idusers, idstatusorder;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idorder;
+    @Column
+    private Integer idusers;
+    @Column
+    private Integer idstatusorder;
+    @Column
     private String data;
 
-    public  Order(){}
+    public Order() {
+    }
 
-    public Order(int idorder, int idusers, String data, int idstatusorder) {
+    public Order(Integer idorder, Integer idusers, String data, Integer idstatusorder) {
         this.idorder = idorder;
         this.idusers = idusers;
         this.data = data;
         this.idstatusorder = idstatusorder;
     }
 
-    public int getIdorder() {
+    public Integer getIdorder() {
         return idorder;
     }
 
-    public void setIdorder(int idorder) {
+    public void setIdorder(Integer idorder) {
         this.idorder = idorder;
     }
 
-    public int getIdusers() {
+    public Integer getIdusers() {
         return idusers;
     }
 
-    public void setIdusers(int idusers) {
+    public void setIdusers(Integer idusers) {
         this.idusers = idusers;
     }
 
-    public int getIdstatusorder() {
+    public Integer getIdstatusorder() {
         return idstatusorder;
     }
 
-    public void setIdstatusorder(int idstatusorder) {
+    public void setIdstatusorder(Integer idstatusorder) {
         this.idstatusorder = idstatusorder;
     }
 

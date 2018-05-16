@@ -1,20 +1,30 @@
 package by.nikita.dao;
 
 
+import javax.persistence.*;
 
-
+@Entity
+@Table(name = "users")
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idUser;
+    @Column
     private String nameUser;
+    @Column
     private String passwordUser;
+    @Column
     private String emailUser;
-    private int idUser;
+    @Column
     private Integer idRole;
-    private int idStatus;
+    @Column
+    private Integer idStatus;
 
-    public User(){}
+    public User() {
+    }
 
 
-    public User(int idUser, String nameUser, String passwordUser, String emailUser, int idRole, int idStatus) {
+    public User(Integer idUser, String nameUser, String passwordUser, String emailUser, Integer idRole, Integer idStatus) {
         this.nameUser = nameUser;
         this.passwordUser = passwordUser;
         this.emailUser = emailUser;
@@ -47,27 +57,27 @@ public class User {
         this.emailUser = emailUser;
     }
 
-    public int getIdUser() {
+    public Integer getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(int idUser) {
+    public void setIdUser(Integer idUser) {
         this.idUser = idUser;
     }
 
-    public int getIdRole() {
+    public Integer getIdRole() {
         return idRole;
     }
 
-    public void setIdRole(int idRole) {
+    public void setIdRole(Integer idRole) {
         this.idRole = idRole;
     }
 
-    public int getIdStatus() {
+    public Integer getIdStatus() {
         return idStatus;
     }
 
-    public void setIdStatus(int idStatus) {
+    public void setIdStatus(Integer idStatus) {
         this.idStatus = idStatus;
     }
 

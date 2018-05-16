@@ -47,5 +47,8 @@
     id:<input name="id">
     <input type="submit" name="nameButton" value="read" >
 </form>
+<form action="/shop/test" method="post">
+    <input type="submit" name="nameButton" value="getAll" >
+</form>
 </body>
 </html>
