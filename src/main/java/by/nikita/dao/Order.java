@@ -1,6 +1,8 @@
 package by.nikita.dao;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "orders")
@@ -15,6 +17,13 @@ public class Order {
     private Integer idstatusorder;
     @Column
     private String data;
+
+    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
+    private List<Backet> listBacket = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "idusers", insertable = false, updatable = false)
+    private User user;
 
     public Order() {
     }
@@ -56,6 +65,22 @@ public class Order {
 
     public void setData(String data) {
         this.data = data;
+    }
+
+    public List<Backet> getListBacket() {
+        return listBacket;
+    }
+
+    public void setListBacket(List<Backet> listBacket) {
+        this.listBacket = listBacket;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

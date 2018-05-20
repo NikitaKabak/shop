@@ -91,12 +91,39 @@ public class TestSrv {
                 request.getRequestDispatcher("/by/nikita/jsp/homepageTest.jsp").forward(request, response);
                 break;
             case "get":
-                Test testGet = new Test();
+                /*Test testGet = new Test();
                 Integer id = Integer.parseInt(request.getParameter("id"));
                 HbmDaoImp hbmDaoImpGet = new HbmDaoImp(Test.class);
-                testGet = (Test)hbmDaoImpGet.get(id);
+                testGet = (Test)hbmDaoImpGet.get(id);*/
+
+                // GET Bucket
+             /*   Backet testGet = new Backet();
+                Integer id = Integer.parseInt(request.getParameter("id"));
+                HbmDaoImp hbmDaoImpGet = new HbmDaoImp(Backet.class);
+                testGet = (Backet)hbmDaoImpGet.get(id);
+                Order getOrder = testGet.getOrder();
+                Product getProduct = testGet.getProduct();*/
+
+                //GET ORDER
+                Order testGet = new Order();
+                Integer id = Integer.parseInt(request.getParameter("id"));
+                HbmDaoImp hbmDaoImpGet = new HbmDaoImp(Order.class);
+                testGet = (Order)hbmDaoImpGet.get(id);
+                List<Backet> backetList = new ArrayList<>();
+                backetList = testGet.getListBacket();
+                User user = testGet.getUser();
+
                 HttpSession session = request.getSession();
                 session.setAttribute("testGet",testGet);
+
+                //GET Bucket
+                /*session.setAttribute("getProduct",getProduct);
+                session.setAttribute("getOrder",getOrder);*/
+
+                //GET ORDER
+                session.setAttribute("backetList",backetList);
+                session.setAttribute("User",user);
+
                 request.getRequestDispatcher("/by/nikita/jsp/homepageTest.jsp").forward(request, response);
                 break;
             case "read":
@@ -110,16 +137,16 @@ public class TestSrv {
                 break;
             case "getAll":
 
-               /* // Test ERntuty
-                List<Backet> listTest = new ArrayList();
-                Backet test = new Backet();
-                HbmDaoImp hbmDaoImpgetAll = new HbmDaoImp(Backet.class);
-                listTest = hbmDaoImpgetAll.getAll(Backet.class);*/
+                // Test ERntuty
+                List<Order> listTest = new ArrayList();
+                Order test = new Order();
+                HbmDaoImp hbmDaoImpgetAll = new HbmDaoImp(Order.class);
+                listTest = hbmDaoImpgetAll.getAll(Order.class);
 
-                List<Test> listTest = new ArrayList();
+                /*List<Test> listTest = new ArrayList();
                 Test test = new Test();
                 HbmDaoImp hbmDaoImpgetAll = new HbmDaoImp(Test.class);
-                listTest = hbmDaoImpgetAll.getAll(Test.class);
+                listTest = hbmDaoImpgetAll.getAll(Test.class);*/
                 HttpSession sessiongetAll = request.getSession();
                 sessiongetAll.setAttribute("listTest",listTest);
                 request.getRequestDispatcher("/by/nikita/jsp/homepageTest.jsp").forward(request, response);

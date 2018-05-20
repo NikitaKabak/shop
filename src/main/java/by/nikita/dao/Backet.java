@@ -20,8 +20,8 @@ public class Backet {
    @Column(name = "idbacket",nullable = false)
     private Integer idbacket;
 
-    @Column(name = "idorder")
-    private Integer idorder;
+    @Column (name = "idord")
+    private Integer idorders;
 
     @Column(name = "idproduct")
     private Integer idproduct;
@@ -29,20 +29,22 @@ public class Backet {
     @Column(name = "qantityby")
     private Integer qantityby;
 
+    @ManyToOne
+    @JoinColumn (name = "idord", insertable = false,updatable = false)
+    private Order order;
+
+    @ManyToOne
+    @JoinColumn (name = "idproduct", insertable = false,updatable = false)
+    private Product product;
+
+
+
     public Integer getIdbacket() {
         return idbacket;
     }
 
     public void setIdbacket(Integer idbacket) {
         this.idbacket = idbacket;
-    }
-
-    public Integer getIdorder() {
-        return idorder;
-    }
-
-    public void setIdorder(Integer idorder) {
-        this.idorder = idorder;
     }
 
     public Integer getIdproduct() {
@@ -61,11 +63,35 @@ public class Backet {
         this.qantityby = qantityby;
     }
 
+    public Integer getIdorders() {
+        return idorders;
+    }
+
+    public void setIdorders(Integer idorders) {
+        this.idorders = idorders;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
     @Override
     public String toString() {
         return "Backet{" +
                 "idbacket=" + idbacket +
-                ", idorder=" + idorder +
+                ", idorder=" + idorders +
                 ", idproduct=" + idproduct +
                 ", qantityby=" + qantityby +
                 '}';
