@@ -19,6 +19,10 @@ public class Product {
     @Column
     private Integer price;
 
+    @ManyToOne
+    @JoinColumn(name = "idstatusproduct", insertable = false, updatable = false)
+    private Productstatus productstatus;
+
     public Product(){}
 
     public  Product(Integer idproduct,String nameproduct,Integer idcategory,Integer idstatusproduct,Integer quantity,Integer price){
@@ -76,6 +80,14 @@ public class Product {
 
     public void setPrice(Integer price) {
         this.price = price;
+    }
+
+    public Productstatus getProductstatus() {
+        return productstatus;
+    }
+
+    public void setProductstatus(Productstatus productstatus) {
+        this.productstatus = productstatus;
     }
 
     @Override

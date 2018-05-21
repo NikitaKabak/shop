@@ -96,24 +96,25 @@
 <c:if test="${userRole != null}">
     <c:out value="userRole:"/><br>
     <c:out value="${userRole.getRole()}"></c:out> // test Ebtity <br>
-    <%--  <c:forEach var="getproduct"  items="${getproduct}">
-          <c:out value="${getproduct}"></c:out> // test Ebtity <br>
-           ID : <c:out value = "${listtest.getIdtest()}"/>
-           Name: <c:out value = "${listtest.getName()}"/>
-           Qantity: <c:out value = "${listtest.getQantity()}"/> <br>
-      </c:forEach>--%>
 </c:if>
 <c:set var="userstatus" value="${Userstatus}"></c:set>
 <c:if test="${userstatus != null}">
     <c:out value="userstatus:"/><br>
     <c:out value="${userstatus.getUserstatus()}"></c:out> // test Ebtity <br>
-    <%--  <c:forEach var="getproduct"  items="${getproduct}">
-          <c:out value="${getproduct}"></c:out> // test Ebtity <br>
-           ID : <c:out value = "${listtest.getIdtest()}"/>
-           Name: <c:out value = "${listtest.getName()}"/>
-           Qantity: <c:out value = "${listtest.getQantity()}"/> <br>
-      </c:forEach>--%>
 </c:if>
+
+
+<c:set var="testProduct" value="${TestProduct}"></c:set>
+<c:if test="${testProduct != null}">
+    <c:out value="testProduct:"/><br>
+    <c:out value="${testProduct}"></c:out> // test Ebtity <br>
+</c:if>
+<c:set var="productstatus" value="${Productstatus}"></c:set>
+<c:if test="${productstatus != null}">
+    <c:out value="productstatus:"/><br>
+    <c:out value="${productstatus}"></c:out> // test Ebtity <br>
+</c:if>
+
 
 
 <body>

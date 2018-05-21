@@ -21,6 +21,7 @@
     <mapping class="by.nikita.Entity.UserRole"/>
     <mapping class="by.nikita.Entity.Userstatus"/>
     <mapping class="by.nikita.Entity.Orgerstatus"/>
+    <mapping class="by.nikita.Entity.Productstatus"/>
 
 
 

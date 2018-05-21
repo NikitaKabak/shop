@@ -103,14 +103,21 @@ public class TestSrv {
                 Product getProduct = testGet.getProduct();*/
 
                 //GET ORDER
-                Order testOrder = new Order();
+                /*Order testOrder = new Order();
                 Integer id = Integer.parseInt(request.getParameter("id"));
                 HbmDaoImp hbmDaoImpGet = new HbmDaoImp(Order.class);
                 testOrder = (Order)hbmDaoImpGet.get(id);
                 List<Backet> backetList = new ArrayList<>();
                 backetList = testOrder.getListBacket();
                 User user = testOrder.getUser();
-                Orgerstatus orgerstatus = testOrder.getOrgerStatus();
+                Orgerstatus orgerstatus = testOrder.getOrgerStatus();*/
+
+                //GET PRODUCT
+                Product testProduct = new Product();
+                Integer id = Integer.parseInt(request.getParameter("id"));
+                HbmDaoImp hbmDaoImpGet = new HbmDaoImp(Product.class);
+                testProduct = (Product)hbmDaoImpGet.get(id);
+                Productstatus productstatus = testProduct.getProductstatus();
 
                 //USER
                 /*User testUser = new User();
@@ -130,10 +137,14 @@ public class TestSrv {
                 session.setAttribute("getOrder",getOrder);*/
 
                 //GET ORDER
-                session.setAttribute("TestOrder",testOrder);
+                /*session.setAttribute("TestOrder",testOrder);
                 session.setAttribute("backetList",backetList);
                 session.setAttribute("User",user);
-                session.setAttribute("Orgerstatus",orgerstatus);
+                session.setAttribute("Orgerstatus",orgerstatus);*/
+
+                //GET PRODUCT
+                session.setAttribute("TestProduct",testProduct);
+                session.setAttribute("Productstatus",productstatus);
 
                 //GET USER
                 /*session.setAttribute("backetList",backetList);*/
