@@ -1,4 +1,4 @@
-package by.nikita.dao;
+package by.nikita.Entity;
 
 import javax.persistence.*;
 

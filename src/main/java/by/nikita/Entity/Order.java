@@ -1,4 +1,4 @@
-package by.nikita.dao;
+package by.nikita.Entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -24,6 +24,10 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "idusers", insertable = false, updatable = false)
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "idstatusorder", insertable = false, updatable = false)
+    private Orgerstatus orgerStatus;
 
     public Order() {
     }
@@ -81,6 +85,14 @@ public class Order {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Orgerstatus getOrgerStatus() {
+        return orgerStatus;
+    }
+
+    public void setOrgerStatus(Orgerstatus orgerStatus) {
+        this.orgerStatus = orgerStatus;
     }
 
     @Override

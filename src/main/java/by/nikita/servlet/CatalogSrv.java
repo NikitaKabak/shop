@@ -1,11 +1,10 @@
 package by.nikita.servlet;
 
 import by.nikita.dao.DaoCatalogImp;
-import by.nikita.dao.Product;
+import by.nikita.Entity.Product;
 
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;

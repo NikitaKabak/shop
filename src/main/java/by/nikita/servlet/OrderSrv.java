@@ -1,9 +1,9 @@
 package by.nikita.servlet;
 
-import by.nikita.dao.Backet;
+import by.nikita.Entity.Backet;
 import by.nikita.dao.DaoOrderImp;
 import by.nikita.dao.HbmDaoImp;
-import by.nikita.dao.Order;
+import by.nikita.Entity.Order;
 
 import javax.naming.NamingException;
 import javax.servlet.ServletException;

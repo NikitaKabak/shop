@@ -1,8 +1,7 @@
 package by.nikita.servlet;
 
-import by.nikita.Hibernate.TestCreate;
 import by.nikita.dao.DaoUsersImp;
-import by.nikita.dao.User;
+import by.nikita.Entity.User;
 import org.apache.log4j.Logger;
 
 import javax.naming.NamingException;

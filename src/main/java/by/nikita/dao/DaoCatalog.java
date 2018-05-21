@@ -1,5 +1,8 @@
 package by.nikita.dao;
 
+import by.nikita.Entity.Product;
+import by.nikita.Entity.User;
+
 import java.util.List;
 
 public interface DaoCatalog<T> {

@@ -1,5 +1,7 @@
 package by.nikita.dao;
 
+import by.nikita.Entity.Order;
+
 import javax.naming.NamingException;
 import java.sql.*;
 import java.util.ArrayList;

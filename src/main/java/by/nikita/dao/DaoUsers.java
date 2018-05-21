@@ -1,5 +1,7 @@
 package by.nikita.dao;
 
+import by.nikita.Entity.User;
+
 import javax.naming.NamingException;
 import java.util.ArrayList;
 import java.util.List;

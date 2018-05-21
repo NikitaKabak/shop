@@ -1,11 +1,19 @@
-package by.nikita.dao;
+package by.nikita.Entity;
 
+
+
+
+import by.nikita.Entity.UserRole;
 
 import javax.persistence.*;
+import java.io.Serializable;
+
 
 @Entity
+/*@OneToOne
+    BIDIRECTIONAL(mappedBy, UNIDIRECTIONAL without  mappedBy)*/
 @Table(name = "users")
-public class User {
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idUser;
@@ -15,11 +23,25 @@ public class User {
     private String passwordUser;
     @Column
     private String emailUser;
-    @Column
+
+    @Column(name = "idrole")
     private Integer idRole;
-    @Column
+
+    @Column(name = "idstatus")
     private Integer idStatus;
 
+    @ManyToOne
+    @JoinColumn(name = "idrole", insertable = false, updatable = false)
+    private UserRole userRole;
+
+    @ManyToOne
+    @JoinColumn(name = "idstatus", insertable = false, updatable = false)
+    private Userstatus userStatus;
+
+
+   /* @JoinColumn (name = "idrole")
+    private UserRole userRole;
+*/
     public User() {
     }
 
@@ -79,6 +101,23 @@ public class User {
 
     public void setIdStatus(Integer idStatus) {
         this.idStatus = idStatus;
+    }
+
+
+    public UserRole getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(UserRole userRole) {
+        this.userRole = userRole;
+    }
+
+    public Userstatus getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(Userstatus userStatus) {
+        this.userStatus = userStatus;
     }
 
     @Override

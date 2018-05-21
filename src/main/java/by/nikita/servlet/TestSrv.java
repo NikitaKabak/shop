@@ -1,15 +1,13 @@
 package by.nikita.servlet;
 
+import by.nikita.Entity.*;
 import by.nikita.dao.*;
 
-import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class TestSrv {
@@ -105,24 +103,43 @@ public class TestSrv {
                 Product getProduct = testGet.getProduct();*/
 
                 //GET ORDER
-                Order testGet = new Order();
+                Order testOrder = new Order();
                 Integer id = Integer.parseInt(request.getParameter("id"));
                 HbmDaoImp hbmDaoImpGet = new HbmDaoImp(Order.class);
-                testGet = (Order)hbmDaoImpGet.get(id);
+                testOrder = (Order)hbmDaoImpGet.get(id);
                 List<Backet> backetList = new ArrayList<>();
-                backetList = testGet.getListBacket();
-                User user = testGet.getUser();
+                backetList = testOrder.getListBacket();
+                User user = testOrder.getUser();
+                Orgerstatus orgerstatus = testOrder.getOrgerStatus();
+
+                //USER
+                /*User testUser = new User();
+                Integer id = Integer.parseInt(request.getParameter("id"));
+                HbmDaoImp hbmDaoImpGet = new HbmDaoImp(User.class);
+                testUser = (User)hbmDaoImpGet.get(id);
+                //List<Backet> backetList = new ArrayList<>();
+                //backetList = testGet.getListBacket();
+                UserRole userRole = testUser.getUserRole();
+                Userstatus userstatus = testUser.getUserStatus();*/
 
                 HttpSession session = request.getSession();
-                session.setAttribute("testGet",testGet);
+
 
                 //GET Bucket
                 /*session.setAttribute("getProduct",getProduct);
                 session.setAttribute("getOrder",getOrder);*/
 
                 //GET ORDER
+                session.setAttribute("TestOrder",testOrder);
                 session.setAttribute("backetList",backetList);
                 session.setAttribute("User",user);
+                session.setAttribute("Orgerstatus",orgerstatus);
+
+                //GET USER
+                /*session.setAttribute("backetList",backetList);*/
+                /*session.setAttribute("TestUser",testUser);
+                session.setAttribute("UserRole",userRole);
+                session.setAttribute("Userstatus",userstatus);*/
 
                 request.getRequestDispatcher("/by/nikita/jsp/homepageTest.jsp").forward(request, response);
                 break;

@@ -1,7 +1,10 @@
-package by.nikita.dao;
+package by.nikita.Entity;
 
 
 
+
+import by.nikita.Entity.Order;
+import by.nikita.Entity.Product;
 
 import javax.persistence.*;
 
