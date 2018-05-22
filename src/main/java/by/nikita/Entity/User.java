@@ -24,19 +24,33 @@ public class User implements Serializable {
     @Column
     private String emailUser;
 
-    @Column(name = "idrole")
+   /*@Column(name = "idrole", columnDefinition = "int default 0")
     private Integer idRole;
 
-    @Column(name = "idstatus")
+    @Column(name = "idstatus",columnDefinition = "int default 3")
     private Integer idStatus;
+*/
 
     @ManyToOne
-    @JoinColumn(name = "idrole", insertable = false, updatable = false)
+    @JoinColumn(name = "idrole")
     private UserRole userRole;
 
     @ManyToOne
-    @JoinColumn(name = "idstatus", insertable = false, updatable = false)
+    @JoinColumn(name = "idstatus")
     private Userstatus userStatus;
+
+    @PrePersist
+    public void prePersist() {
+        if (userRole == null) {
+            userRole = new UserRole(0,"guest");
+        }
+
+        if (userStatus == null) {
+            userStatus = new Userstatus(3,"new");
+        }
+
+    }
+
 
 
    /* @JoinColumn (name = "idrole")
@@ -51,8 +65,8 @@ public class User implements Serializable {
         this.passwordUser = passwordUser;
         this.emailUser = emailUser;
         this.idUser = idUser;
-        this.idRole = idRole;
-        this.idStatus = idStatus;
+       // this.idRole = idRole;
+       //this.idStatus = idStatus;
     }
 
     public String getNameUser() {
@@ -87,7 +101,7 @@ public class User implements Serializable {
         this.idUser = idUser;
     }
 
-    public Integer getIdRole() {
+  /*  public Integer getIdRole() {
         return idRole;
     }
 
@@ -101,7 +115,7 @@ public class User implements Serializable {
 
     public void setIdStatus(Integer idStatus) {
         this.idStatus = idStatus;
-    }
+    }*/
 
 
     public UserRole getUserRole() {
@@ -127,8 +141,10 @@ public class User implements Serializable {
                 ", passwordUser='" + passwordUser + '\'' +
                 ", emailUser='" + emailUser + '\'' +
                 ", idUser=" + idUser +
-                ", idRole=" + idRole +
-                ", idStatus=" + idStatus +
+               // ", idRole=" + idRole +
+                //", idStatus=" + idStatus +
                 '}';
     }
+
+
 }

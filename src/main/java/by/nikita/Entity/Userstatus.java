@@ -7,11 +7,11 @@ import java.util.List;
 @Entity
 @Table(name = "userstatus")
 public class Userstatus {
-    @Id
+    @Id(  )
     private Integer iduserstatus;
     @Column
     private String userstatus;
-    @OneToMany(mappedBy = "userStatus", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "userStatus",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<User> listUser = new ArrayList<>();
 
     public Userstatus(){

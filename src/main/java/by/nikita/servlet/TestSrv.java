@@ -26,12 +26,35 @@ public class TestSrv {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         switch (request.getParameter("nameButton")) {
+            case "Reg":
+                //CREATE USER
+                HbmDaoImp hbmDaoImpReg = new HbmDaoImp(User.class);
+                User userReg = new User();
+                userReg.setNameUser(request.getParameter("name"));
+                userReg.setPasswordUser(request.getParameter("password"));
+                userReg.setEmailUser(request.getParameter("email"));
+                hbmDaoImpReg.create(userReg);
+
+                request.getRequestDispatcher("/by/nikita/jsp/homepageTest.jsp").forward(request, response);
+                break;
+
             case "create":
+                //CREATE TEST
                 Test testCreate = new Test();
                 testCreate.setName(request.getParameter("name"));
                 testCreate.setQantity(Integer.parseInt(request.getParameter("Qantity")));
                 HbmDaoImp hbmDaoImpCreate = new HbmDaoImp(Test.class);
                 hbmDaoImpCreate.create(testCreate);
+                /*//CREATE USER
+                User userCreate = new User();
+                userCreate.setNameUser(request.getParameter("name"));
+                userCreate.setPasswordUser(request.getParameter("password"));
+                userCreate.setEmailUser(request.getParameter("email"));
+                HbmDaoImp hbmDaoImpCreate = new HbmDaoImp(Test.class);
+                hbmDaoImpCreate.create(userCreate);*/
+
+
+
                 request.getRequestDispatcher("/by/nikita/jsp/homepageTest.jsp").forward(request, response);
                 break;
             case "save":
@@ -40,6 +63,9 @@ public class TestSrv {
                 testSave.setQantity(Integer.parseInt(request.getParameter("Qantity")));
                 HbmDaoImp hbmDaoImpSave = new HbmDaoImp(Test.class);
                 hbmDaoImpSave.save(testSave);
+
+
+
                 request.getRequestDispatcher("/by/nikita/jsp/homepageTest.jsp").forward(request, response);
                 break;
             case "update":
@@ -167,8 +193,14 @@ public class TestSrv {
             case "getAll":
 
                 // Test ERntuty
-                List<Order> listTest = new ArrayList();
+                /*List<Order> listTest = new ArrayList();
                 Order test = new Order();
+                HbmDaoImp hbmDaoImpgetAll = new HbmDaoImp(Order.class);
+                listTest = hbmDaoImpgetAll.getAll(Order.class);*/
+
+                //getALL USERS
+                List<User> listTest = new ArrayList();
+                User test = new User();
                 HbmDaoImp hbmDaoImpgetAll = new HbmDaoImp(Order.class);
                 listTest = hbmDaoImpgetAll.getAll(Order.class);
 

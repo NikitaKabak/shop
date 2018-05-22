@@ -18,8 +18,8 @@ public class TestCreate {
         user.setNameUser("niki");
         user.setPasswordUser("niki");
         user.setEmailUser("niki@niki");
-        user.setIdRole(0);
-        user.setIdStatus(0);
+     /*   user.setIdRole(0);
+        user.setIdStatus(0);*/
 
         session.save(user);
         tx.commit();

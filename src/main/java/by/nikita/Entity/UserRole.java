@@ -12,28 +12,28 @@ import java.util.List;
 public class UserRole {
 
     @Id
-    private Integer idrole;
+    private Integer idroles;
 
     @Column
     private String role;
 
-    @OneToMany(mappedBy = "userRole", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "userRole", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<User> listUser = new ArrayList<>();
 
     public UserRole(){
     }
 
     public UserRole(Integer idRole,String role){
-        this.idrole = idRole;
+        this.idroles = idRole;
         this.role = role;
     }
 
     public Integer getIdRole() {
-        return idrole;
+        return idroles;
     }
 
     public void setIdRole(Integer idRole) {
-        this.idrole = idRole;
+        this.idroles = idRole;
     }
 
     public String getRole() {
@@ -55,7 +55,7 @@ public class UserRole {
     @Override
     public String toString() {
         return "UserRole{" +
-                "idRole=" + idrole +
+                "idRole=" + idroles +
                 ", role='" + role + '\'' +
                 '}';
     }

@@ -18,6 +18,8 @@ public class HbmDaoImp<T, PK> implements HbmDao<T, PK> {
     protected final Class<T> clas;
 
     protected SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+    Session session;
+    Transaction transaction;
 
     /*@PersistenceUnit(unitName = "CRM")
     protected EntityManagerFactory entityManagerFactory;
@@ -26,7 +28,14 @@ public class HbmDaoImp<T, PK> implements HbmDao<T, PK> {
     public HbmDaoImp(Class<T> clazz) {
 
         this.clas = clazz;
+        session = sessionFactory.openSession();
+        transaction = session.beginTransaction();
     }
+
+    /*public Session getSession(){
+        session = sessionFactory.openSession();
+        return  session;
+    }*/
 
 
     @Override
@@ -38,8 +47,11 @@ public class HbmDaoImp<T, PK> implements HbmDao<T, PK> {
         entityManager.persist(t);
         tx.commit();
         entityManager.close();*/
-        Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
+        /*Session session = sessionFactory.openSession();*/
+       /* Transaction transaction = session.beginTransaction();*/
+        /*session.beginTransaction();*/
+        /*T t = entity;*/
+
         session.persist(t);
         transaction.commit();
         session.close();
