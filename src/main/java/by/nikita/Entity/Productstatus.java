@@ -12,7 +12,7 @@ public class Productstatus {
     private Integer idproductstatus;
     @Column
     private String productstatus;
-    @OneToMany(mappedBy = "productstatus", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "productstatus", fetch = FetchType.LAZY)
     private List<Product> listProduct = new ArrayList<>();
 
     public Productstatus(){

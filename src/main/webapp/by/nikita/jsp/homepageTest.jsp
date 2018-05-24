@@ -95,6 +95,7 @@
 <c:set var="userRole" value="${UserRole}"></c:set>
 <c:if test="${userRole != null}">
     <c:out value="userRole:"/><br>
+    <c:out value="${userRole}"></c:out> <br>
     <c:out value="${userRole.getRole()}"></c:out> // test Ebtity <br>
 </c:if>
 <c:set var="userstatus" value="${Userstatus}"></c:set>
@@ -102,6 +103,18 @@
     <c:out value="userstatus:"/><br>
     <c:out value="${userstatus.getUserstatus()}"></c:out> // test Ebtity <br>
 </c:if>
+
+<c:set var="listUser" value="${ListUser}"></c:set>
+<c:if test="${listUser != null}">
+    <c:out value="ListUser:"/><br>
+    <c:forEach var="listUser" items="${listUser}">
+        <c:out value="${listUser}"></c:out> // test Ebtity <br>
+        <%-- ID : <c:out value = "${listtest.getIdtest()}"/>
+         Name: <c:out value = "${listtest.getName()}"/>
+         Qantity: <c:out value = "${listtest.getQantity()}"/> <br>--%>
+    </c:forEach>
+</c:if>
+
 
 
 <c:set var="testProduct" value="${TestProduct}"></c:set>

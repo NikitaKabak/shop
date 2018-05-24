@@ -10,9 +10,9 @@ public interface HbmDao<T, PK> {
 
     public void saveOrUpdate(T t);
 
-    public T read(PK id);
+    public T read(Class<T> clazz,PK id);
 
     public void delete(T t);
 
-    public T get(PK id);
+    public T get(Class<T> clazz,PK id);
 }

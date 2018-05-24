@@ -15,27 +15,26 @@ import java.util.List;
 public class HbmDaoImp<T, PK> implements HbmDao<T, PK> {
 
 
-    protected final Class<T> clas;
+    protected Class<T> clas;
 
     protected SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-    Session session;
-    Transaction transaction;
+
 
     /*@PersistenceUnit(unitName = "CRM")
     protected EntityManagerFactory entityManagerFactory;
     EntityManager entityManager;*/
 
-    public HbmDaoImp(Class<T> clazz) {
-
-        this.clas = clazz;
-        session = sessionFactory.openSession();
-        transaction = session.beginTransaction();
+    public HbmDaoImp() {
     }
 
-    /*public Session getSession(){
-        session = sessionFactory.openSession();
-        return  session;
+
+   /* public HbmDaoImp(Class<T> clazz) {
+        this.clas = clazz;
     }*/
+
+    public SessionFactory getSessionFactory(){
+        return  sessionFactory;
+    }
 
 
     @Override
@@ -47,10 +46,9 @@ public class HbmDaoImp<T, PK> implements HbmDao<T, PK> {
         entityManager.persist(t);
         tx.commit();
         entityManager.close();*/
-        /*Session session = sessionFactory.openSession();*/
-       /* Transaction transaction = session.beginTransaction();*/
-        /*session.beginTransaction();*/
-        /*T t = entity;*/
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+
 
         session.persist(t);
         transaction.commit();
@@ -126,11 +124,11 @@ public class HbmDaoImp<T, PK> implements HbmDao<T, PK> {
     }
 
     @Override
-    public T get(PK id) {
+    public T get(Class<T> clazz,PK id) {
 
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        Class<T> tClass;
+        this.clas = clazz;
         T entity = (T) session.get(clas, (Serializable) id);
         transaction.commit();
         session.close();
@@ -138,12 +136,14 @@ public class HbmDaoImp<T, PK> implements HbmDao<T, PK> {
         return entity;
     }
 
+
+
     @Override
-    public T read(PK id) {
+    public T read(Class<T> clazz,PK id) {
 
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        Class<T> tClass;
+        this.clas = clazz;
         T entity = session.find(clas, id);
         transaction.commit();
         session.close();
@@ -153,7 +153,8 @@ public class HbmDaoImp<T, PK> implements HbmDao<T, PK> {
 
     }
 
-    public List getAll(Class clazz) {
+    public List getAll(Class<T> clazz) {
+        this.clas = clazz;
         List list = null;
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();

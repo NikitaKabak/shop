@@ -14,6 +14,10 @@ public class Userstatus {
     @OneToMany(mappedBy = "userStatus",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<User> listUser = new ArrayList<>();
 
+    public Userstatus(Integer iduserstatus){
+        this.iduserstatus = iduserstatus;
+    }
+
     public Userstatus(){
     }
     public Userstatus(Integer iduserstatus,String userstatus){

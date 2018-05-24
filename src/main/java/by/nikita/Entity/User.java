@@ -8,6 +8,9 @@ import by.nikita.Entity.UserRole;
 import javax.persistence.*;
 import java.io.Serializable;
 
+import static by.nikita.servlet.TestSrv.DEFAULT_ROLE;
+import static by.nikita.servlet.TestSrv.DEFAULT_STATUS;
+
 
 @Entity
 /*@OneToOne
@@ -33,13 +36,15 @@ public class User implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "idrole")
-    private UserRole userRole;
+    private UserRole userRole ;
+            //= new UserRole(DEFAULT_ROLE);
+
 
     @ManyToOne
     @JoinColumn(name = "idstatus")
-    private Userstatus userStatus;
+    private Userstatus userStatus = new Userstatus(DEFAULT_STATUS) ;
 
-    @PrePersist
+  /*  @PrePersist
     public void prePersist() {
         if (userRole == null) {
             userRole = new UserRole(0,"guest");
@@ -48,8 +53,7 @@ public class User implements Serializable {
         if (userStatus == null) {
             userStatus = new Userstatus(3,"new");
         }
-
-    }
+    }*/
 
 
 

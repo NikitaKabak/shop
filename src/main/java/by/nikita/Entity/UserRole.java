@@ -12,15 +12,22 @@ import java.util.List;
 public class UserRole {
 
     @Id
+    @GeneratedValue
     private Integer idroles;
 
     @Column
     private String role;
 
-    @OneToMany(mappedBy = "userRole", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    //cascade = CascadeType.ALL,
+
+    @OneToMany(mappedBy = "userRole", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<User> listUser = new ArrayList<>();
 
     public UserRole(){
+    }
+
+    public UserRole(Integer idroles){
+        this.idroles = idroles;
     }
 
     public UserRole(Integer idRole,String role){
