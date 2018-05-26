@@ -12,7 +12,7 @@
 </head>
 <body>
 <h2>Registration</h2>
-<form method="post" action="/shop"> Name <input name ="name" >  <br>
+<form method="post" action="/shop/registracion"> Name <input name ="name" >  <br>
     Password <input name="password" >  <br>
     Email <input name ="email" >  <br>
     <input type="submit" name="nameButton" value="Reg"><br>

@@ -36,7 +36,7 @@ public class TestSrv {
                 HbmDaoImp hbmDaoImpReg = new HbmDaoImp();
                 User userReg = new User();
                 UserRoleService userRoleService = new UserRoleService(hbmDaoImpReg.getSessionFactory());
-                UserRole userRole = userRoleService.getUserRole();
+                UserRole userRole = userRoleService.getUserRoleGuest();
                 userReg.setNameUser(request.getParameter("name"));
                 userReg.setPasswordUser(request.getParameter("password"));
                 userReg.setEmailUser(request.getParameter("email"));
@@ -46,6 +46,8 @@ public class TestSrv {
                 userReg.setUserRole(defaultRole);
                 userReg.setUserStatus(defaultStatus);*/
                 hbmDaoImpReg.create(userReg);
+
+
 
                 request.getRequestDispatcher("/by/nikita/jsp/homepageTest.jsp").forward(request, response);
                 break;
@@ -174,7 +176,7 @@ public class TestSrv {
                 Integer id = Integer.parseInt(request.getParameter("id"));
                 HbmDaoImp hbmDaoImpGet = new HbmDaoImp();
                 testUserRole = (UserRole) hbmDaoImpGet.get(UserRole.class, id);
-                List<User> listUser = testUserRole.getListUser();
+                //List<User> listUser = testUserRole.getListUser();
 
                 HttpSession session = request.getSession();
 
@@ -200,7 +202,7 @@ public class TestSrv {
 
                 //GET USERROLE
                 session.setAttribute("UserRole", testUserRole);
-                session.setAttribute("ListUser", listUser);
+                //session.setAttribute("ListUser", listUser);
 
                 request.getRequestDispatcher("/by/nikita/jsp/homepageTest.jsp").forward(request, response);
                 break;

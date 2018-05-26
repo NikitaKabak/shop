@@ -12,7 +12,7 @@
 </head>
 <body>
 <h2 style="text-align: center">Startpage</h2>
-<form action="shop" method="post">login:<input name="login">
+<form action="/shop/login" method="post">login:<input name="name">
     password<input name="password">
     <input type="submit" name="nameButton" value="login"><br>
 </form>

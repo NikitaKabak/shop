@@ -1,5 +1,8 @@
 package by.nikita.servlet;
 
+import by.nikita.Service.LoginService;
+import by.nikita.Service.RegService;
+
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -87,6 +90,15 @@ public class MainServlet extends HttpServlet {
             case "/shop/test":
                 TestSrv testSrv = new TestSrv();
                 testSrv.doPost(request, response);
+                break;
+            case "/shop/registracion":
+                RegService regService = new RegService();
+                regService.registracion(request, response);
+                break;
+
+            case "/shop/login":
+                LoginService loginService = new LoginService();
+                loginService.login(request, response);
                 break;
             default:
                 request.getRequestDispatcher("/by/nikita/jsp/notFound.jsp").forward(request, response);

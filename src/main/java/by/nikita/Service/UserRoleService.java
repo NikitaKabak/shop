@@ -23,9 +23,10 @@ public class UserRoleService {
 
     }
 
-    public UserRole getUserRole(){
+    public UserRole getUserRoleGuest(){
         Session session = sessionFactory.openSession();
-        Query query = session.createQuery(" FROM UserRole  WHERE role = 'guest'");
+        String rol = "guest";
+        Query query = session.createQuery(" FROM UserRole WHERE role = :role").setParameter("role",rol);
         UserRole userRole = (UserRole)query.getSingleResult();
         session.close();
         return userRole;

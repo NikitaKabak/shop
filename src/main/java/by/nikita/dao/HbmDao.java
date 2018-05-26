@@ -1,10 +1,12 @@
 package by.nikita.dao;
 
+import java.io.Serializable;
+
 public interface HbmDao<T, PK> {
 
     public void create(T t);
 
-    public void save(T t);
+    public Serializable save(T t);
 
     public void update(T t);
 

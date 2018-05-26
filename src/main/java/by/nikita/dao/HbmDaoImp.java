@@ -1,11 +1,13 @@
 package by.nikita.dao;
 
+import by.nikita.Entity.User;
 import by.nikita.Hibernate.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
-import javax.persistence.*;
+import javax.persistence.NoResultException;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -32,8 +34,8 @@ public class HbmDaoImp<T, PK> implements HbmDao<T, PK> {
         this.clas = clazz;
     }*/
 
-    public SessionFactory getSessionFactory(){
-        return  sessionFactory;
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
     }
 
 
@@ -58,7 +60,7 @@ public class HbmDaoImp<T, PK> implements HbmDao<T, PK> {
     }
 
     @Override
-    public void save(T t) {
+    public Serializable save(T t) {
 
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
@@ -75,9 +77,12 @@ public class HbmDaoImp<T, PK> implements HbmDao<T, PK> {
              session.save(backet);
            *//* transaction.commit();*//*
         }*/
-        session.save(t);
+        //session.save(t);
+        Serializable id;
+        id = session.save(t);
         transaction.commit();
         session.close();
+        return id;
     }
 
     @Override
@@ -124,7 +129,7 @@ public class HbmDaoImp<T, PK> implements HbmDao<T, PK> {
     }
 
     @Override
-    public T get(Class<T> clazz,PK id) {
+    public T get(Class<T> clazz, PK id) {
 
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
@@ -136,10 +141,28 @@ public class HbmDaoImp<T, PK> implements HbmDao<T, PK> {
         return entity;
     }
 
+    public T getWhereName(Class<T> clazz, String entityName, String param, String entityparam) {
+        Session session = sessionFactory.openSession();
+        T entity;
+
+        String qeryStr = "From " + entityName + " WHERE " + param + " = :entityparam";
+        Query query = session.createQuery(qeryStr).setParameter("entityparam", entityparam);
+
+        try {
+            entity = (T) query.getSingleResult();
+        } catch (NoResultException ex) {
+            entity = null;
+        } finally {
+            session.close();
+
+        }
+        return entity;
+
+    }
 
 
     @Override
-    public T read(Class<T> clazz,PK id) {
+    public T read(Class<T> clazz, PK id) {
 
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();

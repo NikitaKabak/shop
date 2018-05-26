@@ -12,5 +12,9 @@
 </head>
 <body>
 <h2>LOGIn</h2>
+<form action="/shop/login" method="post">login:<input name="login">
+    password<input name="password">
+    <input type="submit" name="nameButton" value="login"><br>
+</form>
 </body>
 </html>

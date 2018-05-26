@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: zhech
@@ -10,8 +11,9 @@
 <head>
     <title>loginError</title>
 </head>
+<c:set var="error" value="${Error}"></c:set>
+<c:out value="${error}"/>
 <body>
-<h3>Вы ввели не верное имя или пароль</h3>
 <form action="shop" method="post">login:<input name="login">
     password<input name="password">
     <input type="submit" name="nameButton" value="login"><br>
