@@ -1,5 +1,8 @@
 package by.nikita.Entity;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,32 +14,29 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idorder;
-    @Column
-    private Integer idusers;
-    @Column
-    private Integer idstatusorder;
+
     @Column
     private String data;
 
-    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "order")
     private List<Backet> listBacket = new ArrayList<>();
 
     @ManyToOne
-    @JoinColumn(name = "idusers", insertable = false, updatable = false)
+    @JoinColumn(name = "idusers")
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "idstatusorder", insertable = false, updatable = false)
-    private Orgerstatus orgerStatus;
+    @JoinColumn(name = "idstatusorder")
+    private Orgerstatus orgerstatus;
 
     public Order() {
     }
 
-    public Order(Integer idorder, Integer idusers, String data, Integer idstatusorder) {
+    public Order(Integer idorder, User user, String data, Orgerstatus orgerstatus) {
         this.idorder = idorder;
-        this.idusers = idusers;
+        this.user = user;
         this.data = data;
-        this.idstatusorder = idstatusorder;
+        this.orgerstatus = orgerstatus;
     }
 
     public Integer getIdorder() {
@@ -47,21 +47,6 @@ public class Order {
         this.idorder = idorder;
     }
 
-    public Integer getIdusers() {
-        return idusers;
-    }
-
-    public void setIdusers(Integer idusers) {
-        this.idusers = idusers;
-    }
-
-    public Integer getIdstatusorder() {
-        return idstatusorder;
-    }
-
-    public void setIdstatusorder(Integer idstatusorder) {
-        this.idstatusorder = idstatusorder;
-    }
 
     public String getData() {
         return data;
@@ -72,6 +57,7 @@ public class Order {
     }
 
     public List<Backet> getListBacket() {
+
         return listBacket;
     }
 
@@ -88,19 +74,17 @@ public class Order {
     }
 
     public Orgerstatus getOrgerStatus() {
-        return orgerStatus;
+        return orgerstatus;
     }
 
     public void setOrgerStatus(Orgerstatus orgerStatus) {
-        this.orgerStatus = orgerStatus;
+        this.orgerstatus = orgerStatus;
     }
 
     @Override
     public String toString() {
         return "Order{" +
                 "idorder=" + idorder +
-                ", idusers=" + idusers +
-                ", idstatusorder=" + idstatusorder +
                 ", data='" + data + '\'' +
                 '}';
     }

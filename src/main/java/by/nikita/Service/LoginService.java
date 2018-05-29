@@ -1,7 +1,6 @@
 package by.nikita.Service;
 
-import by.nikita.Entity.User;
-import by.nikita.Entity.UserRole;
+import by.nikita.Entity.*;
 import by.nikita.dao.HbmDaoImp;
 
 import javax.servlet.ServletException;
@@ -10,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LoginService {
 
@@ -28,6 +29,22 @@ public class LoginService {
 
 
             if (userLog != null && passwordUser.equals(userLog.getPasswordUser())) {
+
+                List<Order> testOrderList = new ArrayList<>();
+                List<Order> testOrderList2 = new ArrayList<>();
+                Integer iduserLog = userLog.getIdUser();
+                testOrderList = hbmDaoImpReg.getListWhereName(Order.class, "Order", "user", userLog);
+               // testOrderList = hbmDaoImpReg.getListWhereNameJoin();
+                List<Backet> testBacketList = null;
+
+                for(Order order : testOrderList){
+                    testOrderList2 = hbmDaoImpReg.getListWhereNameJoin(order);
+
+                }
+
+                /*List<Backet> backetList = new ArrayList<>();
+                backetList = testOrder.getListBacket();
+                Orgerstatus orgerstatus = testOrder.getOrgerStatus();*/
                 /*UserRoleService userRoleService = new UserRoleService(hbmDaoImpReg.getSessionFactory());
                 UserRole userRoleGuest = userRoleService.getUserRoleGuest();
                 userReg = new User();
@@ -40,6 +57,11 @@ public class LoginService {
 */
 
                 session.setAttribute("TestUser", userLog);
+                session.setAttribute("TestOrderList",testOrderList);
+                session.setAttribute("BacketList",testBacketList);
+               // session.setAttribute("Orgerstatus",orgerstatus);
+
+
                 request.getRequestDispatcher("/by/nikita/jsp/homepageTest.jsp").forward(request, response);
 
             } else {

@@ -12,15 +12,15 @@ public class Product {
     private String nameproduct;
     @Column
     private Integer idcategory;
-    @Column
-    private Integer idstatusproduct;
+    /*@Column
+    private Integer idstatusproduct;*/
     @Column
     private Integer quantity;
     @Column
     private Integer price;
 
     @ManyToOne
-    @JoinColumn(name = "idstatusproduct", insertable = false, updatable = false)
+    @JoinColumn(name = "idstatusproduct")
     private Productstatus productstatus;
 
     public Product(){}
@@ -29,7 +29,7 @@ public class Product {
         this.idproduct = idproduct;
         this.nameproduct = nameproduct;
         this.idcategory = idcategory;
-        this.idstatusproduct = idstatusproduct;
+       // this.idstatusproduct = idstatusproduct;
         this.quantity = quantity;
         this.price = price;
     }
@@ -58,13 +58,13 @@ public class Product {
         this.idcategory = idcategory;
     }
 
-    public Integer getIdstatusproduct() {
+ /*   public Integer getIdstatusproduct() {
         return idstatusproduct;
     }
 
     public void setIdstatusproduct(Integer idstatusproduct) {
         this.idstatusproduct = idstatusproduct;
-    }
+    }*/
 
     public Integer getQuantity() {
         return quantity;
@@ -96,7 +96,7 @@ public class Product {
                 "idproduct=" + idproduct +
                 ", nameproduct='" + nameproduct + '\'' +
                 ", idcategory=" + idcategory +
-                ", idstatusproduct=" + idstatusproduct +
+               // ", idstatusproduct=" + idstatusproduct +
                 ", quantity=" + quantity +
                 ", price=" + price +
                 '}';

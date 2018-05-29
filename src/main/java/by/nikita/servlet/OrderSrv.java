@@ -57,7 +57,7 @@ public class OrderSrv {
 
                 Map<Integer, Integer> map = (Map<Integer, Integer>) session.getAttribute("Backet");
 
-                if (map != null) {
+                /*if (map != null) {
                     Map<Integer, Integer> backetMap = new HashMap<>();
                     backetMap.putAll(map);
                     System.out.println("Map из requesta");
@@ -73,11 +73,11 @@ public class OrderSrv {
                         System.out.println("Key: " + idProduckt + " Value: " + qantityby);
                         backet.setIdproduct(idProduckt);
                         backet.setQantityby(qantityby);
-                        /*daoBacket.create(backet);*/
+                        *//*daoBacket.create(backet);*//*
                         daoBacket.save(backet);
                     }
                     System.out.println(backet);
-                }
+                }*/
 
 
 

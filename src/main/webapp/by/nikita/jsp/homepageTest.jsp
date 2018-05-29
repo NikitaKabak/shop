@@ -103,6 +103,21 @@
     <c:out value="userstatus:"/><br>
     <c:out value="${userstatus.getUserstatus()}"></c:out> // test Ebtity <br>
 </c:if>
+<c:set var="testOrderList" value="${TestOrderList}"></c:set>
+<c:if test="${testOrderList != null}">
+    <c:out value="TestOrderList:"/><br>
+    <c:forEach var="testOrderList" items="${testOrderList}">
+        <c:out value="${testOrderList}"></c:out> // test Ebtity <br>
+        <c:set var="backetList" value="${BacketList}"></c:set>
+        <c:forEach var="backetList" items="${backetList}">
+            <c:out value="${backetList}"></c:out>
+        </c:forEach>
+        <%-- ID : <c:out value = "${listtest.getIdtest()}"/>
+         Name: <c:out value = "${listtest.getName()}"/>
+         Qantity: <c:out value = "${listtest.getQantity()}"/> <br>--%>
+    </c:forEach>
+</c:if>
+
 
 <c:set var="listUser" value="${ListUser}"></c:set>
 <c:if test="${listUser != null}">

@@ -20,7 +20,7 @@ public class UserRole {
 
     //cascade = CascadeType.ALL,
 
-    @OneToMany(mappedBy = "userRole", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "userRole", cascade = CascadeType.ALL)
     private List<User> listUser = new ArrayList<>();
 
     public UserRole(){

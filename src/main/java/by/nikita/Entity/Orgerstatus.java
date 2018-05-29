@@ -12,7 +12,7 @@ public class Orgerstatus {
     @Column
     private String orderstatus;
 
-    @OneToMany(mappedBy = "orgerStatus", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "orgerstatus", fetch = FetchType.LAZY)
     private List<Order> listUser = new ArrayList<>();
 
     public Orgerstatus() {

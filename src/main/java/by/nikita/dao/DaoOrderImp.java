@@ -77,7 +77,9 @@ public class DaoOrderImp implements DaoOrder {
                 String data = result.getString("data");
                 Integer idstatusorder = result.getInt("idstatusorder");
 
-                order = new Order(idorder, idusers, data, idstatusorder);
+
+                order = new Order();
+               // order = new Order(idorder, idusers, data, idstatusorder);
 
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -121,7 +123,8 @@ public class DaoOrderImp implements DaoOrder {
                     String data = result.getString("data");
                     int idusers = result.getInt("idusers");
                     int idstatusorder = result.getInt("idstatusorder");
-                    Order order = new Order(idorder, idusers, data, idstatusorder);
+                    Order order = new Order();
+                   // Order order = new Order(idorder, idusers, data, idstatusorder);
                     orders.add(order);
                 }
 

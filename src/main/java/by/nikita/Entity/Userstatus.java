@@ -11,7 +11,7 @@ public class Userstatus {
     private Integer iduserstatus;
     @Column
     private String userstatus;
-    @OneToMany(mappedBy = "userStatus",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "userStatus",cascade = CascadeType.ALL)
     private List<User> listUser = new ArrayList<>();
 
     public Userstatus(Integer iduserstatus){
