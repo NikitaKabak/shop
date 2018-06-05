@@ -12,7 +12,7 @@
 
   <servlet>
     <servlet-name>mainServlet</servlet-name>
-    <servlet-class>by.nikita.servlet.MainServlet</servlet-class>
+    <servlet-class>nikita.nikita.servlet.MainServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>mainServlet</servlet-name>
@@ -20,7 +20,7 @@
   </servlet-mapping>
  <!-- <servlet>
     <servlet-name>firstServlet</servlet-name>
-    <servlet-class>by.nikita.servlet.FirstServlet</servlet-class>
+    <servlet-class>FirstServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>firstServlet</servlet-name>
@@ -28,7 +28,7 @@
   </servlet-mapping>-->
   <!--<servlet>
     <servlet-name>buttons</servlet-name>
-    <servlet-class>by.nikita.servlet.Buttons</servlet-class>
+    <servlet-class>Buttons</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>buttons</servlet-name>
@@ -36,7 +36,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>catalog</servlet-name>
-    <servlet-class>by.nikita.servlet.CatalogSrv</servlet-class>
+    <servlet-class>CatalogSrv</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>catalog</servlet-name>
@@ -44,7 +44,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>product</servlet-name>
-    <servlet-class>by.nikita.servlet.ProductSrv</servlet-class>
+    <servlet-class>ProductSrv</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>product</servlet-name>

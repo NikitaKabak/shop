@@ -16,15 +16,15 @@
 
 
    <!-- <property name="hibernate.hbm2ddl.auto">update</property>-->
-    <mapping class="by.nikita.Entity.Test"/>
-    <mapping class="by.nikita.Entity.Backet"/>
-    <mapping class="by.nikita.Entity.Order"/>
-    <mapping class="by.nikita.Entity.Product"/>
-    <mapping class="by.nikita.Entity.User"/>
-    <mapping class="by.nikita.Entity.UserRole"/>
-    <mapping class="by.nikita.Entity.Userstatus"/>
-    <mapping class="by.nikita.Entity.Orgerstatus"/>
-    <mapping class="by.nikita.Entity.Productstatus"/>
+    <mapping class="nikita.nikita.Entity.Test"/>
+    <mapping class="nikita.nikita.Entity.Backet"/>
+    <mapping class="nikita.nikita.Entity.Order"/>
+    <mapping class="nikita.nikita.Entity.Product"/>
+    <mapping class="nikita.nikita.Entity.User"/>
+    <mapping class="nikita.nikita.Entity.UserRole"/>
+    <mapping class="nikita.nikita.Entity.Userstatus"/>
+    <mapping class="nikita.nikita.Entity.Orderstatus"/>
+    <mapping class="nikita.nikita.Entity.Productstatus"/>
 
 
 
