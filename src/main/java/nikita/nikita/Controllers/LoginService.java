@@ -1,21 +1,23 @@
-package nikita.nikita.Service;
+package nikita.nikita.Controllers;
 
 //import by.nikita.Entity.*;
+import nikita.nikita.Service.HomePageService;
 import nikita.nikita.dao.HbmDaoImp;
-import nikita.nikita.Entity.Backet;
-import nikita.nikita.Entity.Order;
 import nikita.nikita.Entity.User;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
+@Controller
 public class LoginService {
 
+    @RequestMapping(value = "/shop/login", method = RequestMethod.POST)
     public void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String nameUser = request.getParameter("name");
         String passwordUser = request.getParameter("password");
@@ -23,7 +25,7 @@ public class LoginService {
         if (nameUser.equals("") || passwordUser.equals("")) {
             String error = "Заполните все поля";
             session.setAttribute("Error", error);
-            request.getRequestDispatcher("/nikita/nikita/jsp/loginError.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/pages/loginError.jsp").forward(request, response);
         } else {
             HbmDaoImp hbmDaoImpReg = new HbmDaoImp();
             User userLog; // = new User(); // надо  ли  new User()?
@@ -69,7 +71,7 @@ public class LoginService {
             } else {
                 String error = "Вы ввели не верные данные:";
                 session.setAttribute("Error", error);
-                request.getRequestDispatcher("/nikita/nikita/jsp/loginError.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/pages/loginError.jsp").forward(request, response);
             }
         }
 

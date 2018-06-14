@@ -1,33 +1,39 @@
-package nikita.nikita.servlet;
+package nikita.nikita.Controllers;
 
 import nikita.nikita.Entity.Backet;
 import nikita.nikita.Entity.Order;
 import nikita.nikita.Entity.Product;
 import nikita.nikita.Entity.User;
 import nikita.nikita.Service.HomePageService;
-import nikita.nikita.dao.DaoOrderImp;
 import nikita.nikita.dao.HbmDaoImp;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+@Controller
 public class OrderSrv {
+
+   // ApplicationContext context = new ClassPathXmlApplicationContext("WEB-INF/spring/app-context.xml");
+
+    @RequestMapping(value = "/shop/order", method = RequestMethod.GET)
     public void doGet(HttpServletRequest request, HttpServletResponse response) {
 
     }
-
+    @RequestMapping(value = "/shop/order", method = RequestMethod.POST)
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         switch (request.getParameter("nameButton")) {
             case "Create":
                 HttpSession session = request.getSession();
                 HbmDaoImp daoImpl = new HbmDaoImp();
+              //  HbmDaoImp daoImpl = context.getBean("HbmDaoImp",HbmDaoImp.class);
                 Integer iduser = (Integer) session.getAttribute("iduser");
                 User user = (User) daoImpl.get(User.class, iduser);
 
@@ -77,7 +83,7 @@ public class OrderSrv {
 
 
             default:
-                request.getRequestDispatcher("/nikita/nikita/jsp/notFound.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/pages/notFound.jsp").forward(request, response);
                 break;
         }
 

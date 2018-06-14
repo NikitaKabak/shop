@@ -1,10 +1,12 @@
-package nikita.nikita.Service;
+package nikita.nikita.Controllers;
 
 import nikita.nikita.Entity.Productstatus;
 import nikita.nikita.dao.DaoCatalogImp;
 import nikita.nikita.Entity.Product;
 import nikita.nikita.dao.HbmDaoImp;
-import nikita.nikita.servlet.CatalogSrv;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
@@ -14,20 +16,23 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
+@Controller
 public class ProductSrv {
     Map<Integer, Integer> backet = new HashMap<>();
     Map<String, Integer> backetList = new HashMap<>();
+ //   ApplicationContext context = new ClassPathXmlApplicationContext("WEB-INF/spring/app-context.xml");
 
+    @RequestMapping(value = "/shop/product", method = RequestMethod.GET)
     public  void getProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         Product product = null;
         HbmDaoImp getProductID = new HbmDaoImp();
+       // HbmDaoImp getProductID = context.getBean("HbmDaoImp",HbmDaoImp.class);
         product = (Product) getProductID.read(Product.class,id);
         Productstatus productstatus = product.getProductstatus();
         //product.setProductstatus(product.getProductstatus());
         request.setAttribute("product", product);
-        request.getRequestDispatcher("/nikita/nikita/jsp/product.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/pages/product.jsp").forward(request, response);
     }
 
  /*   public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -44,7 +49,7 @@ public class ProductSrv {
         request.getRequestDispatcher("/nikita/nikita/jsp/product.jsp").forward(request, response);
     }*/
 
-
+    @RequestMapping(value = "/shop/product", method = RequestMethod.POST)
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         /*System.out.println(request.getParameter("nameButton"));*/
         switch (request.getParameter("nameButton")) {
@@ -120,7 +125,7 @@ public class ProductSrv {
 
                  request.getRequestDispatcher("/by/nikita/jsp/catalog.jsp").forward(request,response);
             default:
-                request.getRequestDispatcher("/nikita/nikita/jsp/notFound.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/pages/notFound.jsp").forward(request, response);
                 break;
         }
 

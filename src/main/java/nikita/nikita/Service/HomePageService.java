@@ -3,6 +3,8 @@ package nikita.nikita.Service;
 import nikita.nikita.Entity.Order;
 import nikita.nikita.Entity.User;
 import nikita.nikita.dao.HbmDaoImp;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +17,7 @@ import java.util.List;
 public class HomePageService {
     HttpServletRequest request;
     HttpServletResponse response;
+    ApplicationContext context = new ClassPathXmlApplicationContext("WEB-INF/spring/app-context.xml");
 
 
     public HomePageService(HttpServletRequest request, HttpServletResponse response) {
@@ -28,7 +31,10 @@ public class HomePageService {
         List<Order> testOrderList = new ArrayList<>();
         List<Order> testOrderList2 = new ArrayList<>();
         Integer iduserLog = userLog.getIdUser();
-        HbmDaoImp hbmDaoImpReg = new HbmDaoImp();
+
+       // HbmDaoImp hbmDaoImpReg = new HbmDaoImp();
+        HbmDaoImp hbmDaoImpReg = context.getBean("HbmDaoImp",HbmDaoImp.class);
+
         HttpSession session = request.getSession();
         testOrderList = hbmDaoImpReg.getListWhereName(Order.class, "Order", "user", userLog);
         // testOrderList = hbmDaoImpReg.getListWhereNameJoin();
@@ -60,6 +66,6 @@ public class HomePageService {
         // session.setAttribute("Orderstatus",orgerstatus);
 
 
-        request.getRequestDispatcher("/nikita/nikita/jsp/homepageUsers.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/pages/homepageUsers.jsp").forward(request, response);
     }
 }

@@ -23,9 +23,9 @@ public class TestSrv {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         switch (request.getParameter("nameButton")) {
             case "Create":
-                request.getRequestDispatcher("/nikita/nikita/jsp/homepageTest.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/pages/homepageTest.jsp").forward(request, response);
             default:
-                request.getRequestDispatcher("/nikita/nikita/jsp/notFound.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/pages/notFound.jsp").forward(request, response);
                 break;
         }
     }
@@ -52,7 +52,7 @@ public class TestSrv {
 
 
 
-                request.getRequestDispatcher("/nikita/nikita/jsp/homepageTest.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/pages/homepageTest.jsp").forward(request, response);
                 break;
 
             case "create":
@@ -72,7 +72,7 @@ public class TestSrv {
 
 
 
-                request.getRequestDispatcher("/nikita/nikita/jsp/homepageTest.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/pages/homepageTest.jsp").forward(request, response);
                 break;
             case "save":
                 Test testSave = new Test();
@@ -83,7 +83,7 @@ public class TestSrv {
 
 
 
-                request.getRequestDispatcher("/nikita/nikita/jsp/homepageTest.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/pages/homepageTest.jsp").forward(request, response);
                 break;
             case "update":
                 Test testUpdate = new Test();
@@ -96,7 +96,7 @@ public class TestSrv {
                 testUpdate = (Test) hbmDaoImpUpdate.get(Test.class,idUpdate);
                 HttpSession sessionUpdate = request.getSession();
                 sessionUpdate.setAttribute("testGet", testUpdate);
-                request.getRequestDispatcher("/nikita/nikita/jsp/homepageTest.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/pages/homepageTest.jsp").forward(request, response);
                 break;
             case "saveOrUpdate":
                 Test testSaveOrUpdate = new Test();
@@ -109,9 +109,9 @@ public class TestSrv {
                 testSaveOrUpdate = (Test) hbmSaveOrUpdate.get(Test.class, idSaveOrUpdate);
                 HttpSession sessionSaveOrUpdate = request.getSession();
                 sessionSaveOrUpdate.setAttribute("testGet", testSaveOrUpdate);
-                request.getRequestDispatcher("/nikita/nikita/jsp/homepageTest.jsp").forward(request, response);
-                request.getRequestDispatcher("/nikita/nikita/jsp/homepageTest.jsp").forward(request, response);
-                request.getRequestDispatcher("/nikita/nikita/jsp/homepageTest.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/pages/homepageTest.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/pages/homepageTest.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/pages/homepageTest.jsp").forward(request, response);
                 break;
             case "delete":
                 Test testDelete = new Test();
@@ -121,7 +121,7 @@ public class TestSrv {
                 hbmDaoImpDelete.delete(testDelete);
                 /*HttpSession session = request.getSession();
                 session.setAttribute("testGet",testGet);*/
-                request.getRequestDispatcher("/nikita/nikita/jsp/homepageTest.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/pages/homepageTest.jsp").forward(request, response);
                 break;
             case "remove":
                 Test testRemove = new Test();
@@ -131,7 +131,7 @@ public class TestSrv {
                 hbmDaoImpRemove.remove(testRemove);
                 /*HttpSession session = request.getSession();
                 session.setAttribute("testGet",testGet);*/
-                request.getRequestDispatcher("/nikita/nikita/jsp/homepageTest.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/pages/homepageTest.jsp").forward(request, response);
                 break;
             case "get":
                 /*Test testGet = new Test();
@@ -207,7 +207,7 @@ public class TestSrv {
                 session.setAttribute("UserRole", testUserRole);
                 //session.setAttribute("ListUser", listUser);
 
-                request.getRequestDispatcher("/nikita/nikita/jsp/homepageTest.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/pages/homepageTest.jsp").forward(request, response);
                 break;
             case "read":
                 Test testRead = new Test();
@@ -216,7 +216,7 @@ public class TestSrv {
                 testRead = (Test) hbmDaoImpRead.read(Test.class, idRead);
                 HttpSession sessionRead = request.getSession();
                 sessionRead.setAttribute("testGet", testRead);
-                request.getRequestDispatcher("/nikita/nikita/jsp/homepageTest.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/pages/homepageTest.jsp").forward(request, response);
                 break;
             case "getAll":
 
@@ -238,11 +238,11 @@ public class TestSrv {
                 listTest = hbmDaoImpgetAll.getAll(Test.class);*/
                 HttpSession sessiongetAll = request.getSession();
                 sessiongetAll.setAttribute("listTest", listTest);
-                request.getRequestDispatcher("/nikita/nikita/jsp/homepageTest.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/pages/homepageTest.jsp").forward(request, response);
                 break;
 
             default:
-                request.getRequestDispatcher("/nikita/nikita/jsp/notFound.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/pages/notFound.jsp").forward(request, response);
                 break;
         }
 

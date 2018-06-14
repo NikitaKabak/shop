@@ -24,6 +24,7 @@ public class HbmDaoImp<T, PK> implements HbmDao<T, PK> {
     protected SessionFactory sessionFactory = Singleton.getSessionFactory();
 
 
+
     /*@PersistenceUnit(unitName = "CRM")
     protected EntityManagerFactory entityManagerFactory;
     EntityManager entityManager;*/
@@ -288,6 +289,14 @@ public class HbmDaoImp<T, PK> implements HbmDao<T, PK> {
         transaction.commit();
 
         return list;
+    }
+
+    public void setClas(Class<T> clas) {
+        this.clas = clas;
+    }
+
+    public Class<T> getClas() {
+        return clas;
     }
 }
 

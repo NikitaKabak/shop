@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+    <context:component-scan base-package="nikita"/>
+
+ <!--   <bean class="nikita.nikita.dao.HbmDaoImp" name="HbmDaoImp">
+    </bean>-->
+
+<!--  FROM TESTSPRING
+        &lt;!&ndash; services &ndash;&gt;
+    <bean class="nikita.dto.Students" name="student1" scope="prototype">
+        <property name="firstName" value="Student Fist Name1"/>
+        <property name="lastName" value="Student Last Name1"/>
+    </bean>
+    <bean class="nikita.dto.Students" name="student2">
+        <property name="firstName" value="Student Fist Name2"/>
+        <property name="lastName" value="Student Last Name2"/>
+    </bean>
+
+
+    <bean class="nikita.dto.ServiceStudent" name="serviceStudent" autowire="constructor" init-method="init" destroy-method="destract">
+       &lt;!&ndash; <constructor-arg name="student" ref="student1"/>&ndash;&gt;
+        <property name = "studentsList">
+            <list>
+                <ref bean="student1"/>
+                <ref bean="student1"/>
+            </list>
+        </property>
+    </bean>-->
+
+
+
+
+</beans>

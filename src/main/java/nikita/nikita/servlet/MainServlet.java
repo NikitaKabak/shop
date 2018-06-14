@@ -1,8 +1,8 @@
 package nikita.nikita.servlet;
 
-import nikita.nikita.Service.LoginService;
-import nikita.nikita.Service.ProductSrv;
+import nikita.nikita.Controllers.*;
 import nikita.nikita.Service.RegService;
+import org.springframework.stereotype.Controller;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+
+@Controller
 public class MainServlet extends HttpServlet {
     private Integer iduser;
 
@@ -53,7 +55,7 @@ public class MainServlet extends HttpServlet {
                 break;
 
             default:
-                request.getRequestDispatcher("/nikita/nikita/jsp/notFound.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/pages/notFound.jsp").forward(request, response);
                 break;
         }
 
@@ -102,7 +104,7 @@ public class MainServlet extends HttpServlet {
                 loginService.login(request, response);
                 break;
             default:
-                request.getRequestDispatcher("/nikita/nikita/jsp/notFound.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/pages/notFound.jsp").forward(request, response);
                 break;
         }
     }
